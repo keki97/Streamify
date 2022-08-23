@@ -15,10 +15,19 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pricing.css" />
+    <link rel="stylesheet" href="form.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
 
     <title>Form</title>
   </head>
   <body>
+    <section class="pricing">
+      <div class="pricing-header">
+        <h2 class="secondary-header white">Load your Streamgun</h2>
+        <h3 class="tertiary-header">Stream without limits on any device</h3>
+      </div>
+    </section>
     <!-- <h2 class="secondary-header">Welcome onboard!</h2> -->
     <!-- <h3 class="tertiary-header">Thank you for your order</h3>
     <p class="paragraph">
@@ -40,7 +49,7 @@
             placeholder="Cardholder name"
             class="input-fields"
           />
-          <p class="error-message">Please enter a valid name!</p>
+          <p class="error-message name-error">Please enter a valid name!</p>
           <span class="material-symbols-outlined icon"> person </span>
           </div>
           <div class="relative full-width">
@@ -52,7 +61,7 @@
             placeholder="Address"
             class="input-fields"
           />
-          <p class="error-message">Please enter a valid address!</p>
+          <p class="error-message address-error">Please enter a valid address!</p>
           <span class="material-symbols-outlined icon">
             location_on
             </span>
@@ -67,7 +76,7 @@
           placeholder="Email address"
           class="input-fields"
           />
-          <p class="error-message">Please enter a valid email address!</p>
+          <p class="error-message email-error">Please enter a valid email address!</p>
           <span class="material-symbols-outlined icon">
             mail
             </span>
@@ -76,18 +85,18 @@
 
           <label class="secondary-blue" for="card-num">Card number</label>
           <input
-          type="number"
+          type="tel"
           id="card-num"
           name="card-num"
           placeholder="Card number"
           class="input-fields"
           />
-          <p class="error-message">Please enter a valid card number!</p>
+          <p class="error-message card-num-error">Please enter a valid card number!</p>
           <span class="material-symbols-outlined icon">
             credit_card
             </span>
         </div>
-          <div class="card-info">
+          <div class="card-info width-75">
             <div class="flex-column">
               <label class="secondary-blue" for="cvc">CVC</label>
               <input
@@ -95,20 +104,20 @@
                 id="cvc"
                 name="cvc"
                 placeholder="CVC"
-                class="input-fields width-75"
+                class="input-fields-secondary width-75"
               />
-              <p class="error-message">Please enter a valid CVC!</p>
+              <p class="error-message cvc-error">Please enter a valid CVC!</p>
             </div>
             <div class="flex-column">
-              <label class="secondary-blue" for="expiration">Exp. date</label>
+              <label class="secondary-blue" for="date">Exp. date</label>
               <input
-                type="number"
-                id="expiration"
-                name="expiration"
+                type="text"
+                id="date"
+                name="date"
                 placeholder="MM/YY"
-                class="input-fields width-75"
+                class="input-fields-secondary width-75"
               />
-              <p class="error-message">Please enter a valid date!</p>
+              <p class="error-message date-error">Please enter a valid date!</p>
             </div>
           </div>
           <div class="checkbox">
@@ -129,13 +138,13 @@
               >Do you have a coupon code?</label
             >
             <input
-              type="number"
+              type="text"
               id="coupon"
               name="coupon"
               placeholder="Coupon code"
-              class="input-fields"
+              class="input-fields-secondary"
             />
-            <p class="error-message">Please enter a valid coupon code!</p>
+            <p class="error-message coupon-error">Please enter a valid coupon code!</p>
           </div>
           <div class="horizontal-line"></div>
           <div class="packet-container">
