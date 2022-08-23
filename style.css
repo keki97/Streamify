@@ -13,7 +13,6 @@ body {
 }
 
 .secondary-header {
-  font-family: sans-serif;
   font-weight: 800;
   font-size: 64px;
   line-height: 78px;
@@ -46,6 +45,14 @@ body {
 
 .dark-grey {
   color: #657785;
+}
+
+.grey-medium {
+  background-color: #99a8b4;
+}
+
+.highlight-blue {
+  background: #10b0e7;
 }
 
 .bold {

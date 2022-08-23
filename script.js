@@ -1,5 +1,71 @@
 "use strict";
 
+// PRICING
+
+const pricingArray = [
+  {
+    header: "individual",
+    secondaryHeader: "1 month free",
+    price: 4.99,
+    priceDescription: "/month after offer period",
+    accountNum: "1 account",
+    button: "choose now",
+    listOne: "Stream any content",
+    listTwo: "Unlimited streams",
+    footer:
+      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+  },
+
+  {
+    header: "family",
+    secondaryHeader: "1 month free",
+    price: 9.99,
+    priceDescription: "/month after offer period",
+    accountNum: "Up to 7 accounts",
+    button: "choose now",
+    listOne: "7 Premium accounts for family members living under one roof",
+    listTwo: "Block explicit content (Kids mode)",
+    listThree: "Stream any content",
+    listFour: "Unlimited streams",
+    footer:
+      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+  },
+
+  {
+    header: "couple",
+    secondaryHeader: "1 month free",
+    price: 6.99,
+    priceDescription: "/month after offer period",
+    accountNum: "2 accounts",
+    button: "choose now",
+    listOne: "2 Premium accounts for a couple under one roof",
+    listTwo: "Stream any content",
+    listThree: "Unlimited streams",
+    footer:
+      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+  },
+];
+
+const pricingPackets = document.querySelector(".pricing-packets-container");
+
+const htmlIndividual = `
+<div class='pricing-packets'>
+  <h2>${pricingArray[0].header}</h2>
+  <h3>${pricingArray[0].secondaryHeader}</h3>
+  <p>${pricingArray[0].price}&#x20AC;</p>
+  <p>${pricingArray[0].priceDescription}</p>
+  <p>${pricingArray[0].accountNum}</p>
+  <button>${pricingArray[0].button}</button>
+  <ul>
+    <li>${pricingArray[0].listOne}</li>
+    <li>${pricingArray[0].listTwo}</li>
+  </ul>
+  <p>${pricingArray[0].footer}</p>
+</div>
+  `;
+
+pricingPackets.insertAdjacentHTML("beforeend", htmlIndividual);
+
 // FORM VALIDATION
 
 const form = document.querySelector(".details");

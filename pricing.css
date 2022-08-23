@@ -5,3 +5,48 @@
 .pricing-header {
   padding-bottom: 64px;
 }
+
+.monthly-yearly-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* font-weight: 600; */
+  font-size: 24px;
+  line-height: 29px;
+  color: #f9f9f9;
+  margin-bottom: 64px;
+}
+
+.monthly-yearly {
+  width: 80px;
+  height: 38px;
+  border-radius: 64px;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 0 4px;
+  margin: 0 12px;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f9f9f9;
+}
+
+.pricing-packets-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.pricing-packets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e0e213d;
+}
