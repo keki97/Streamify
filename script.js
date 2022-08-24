@@ -9,6 +9,7 @@ const pricingArray = [
     price: 4.99,
     oldPrice: 4.99 * 12,
     priceDescription: "/month after <br /> offer period",
+    priceDescriptionYear: "/year after <br /> offer period",
     accountNum: "1 account",
     button: "choose now",
     list: ["Stream any content", "Unlimited streams"],
@@ -22,6 +23,7 @@ const pricingArray = [
     price: 9.99,
     oldPrice: 9.99 * 12,
     priceDescription: "/month after <br /> offer period",
+    priceDescriptionYear: "/year after <br /> offer period",
     accountNum: "Up to 7 accounts",
     button: "choose now",
     list: [
@@ -40,6 +42,7 @@ const pricingArray = [
     price: 6.99,
     oldPrice: 6.99 * 12,
     priceDescription: "/month after <br /> offer period",
+    priceDescriptionYear: "/year after <br /> offer period",
     accountNum: "2 accounts",
     button: "choose now",
     list: [
@@ -85,6 +88,91 @@ pricingArray.forEach((el) => {
   `;
 
   pricingPackets.insertAdjacentHTML("beforeend", html);
+});
+
+// TOGGLE MONTH AND YEAR PAYMENT
+
+const pricingToggle = document.querySelector(".monthly-yearly");
+const monthly = document.querySelector(".monthly");
+const yearly = document.querySelector(".yearly");
+
+pricingToggle.addEventListener("click", function (e) {
+  pricingToggle.classList.toggle("grey-medium");
+  pricingToggle.classList.toggle("highlight-blue");
+  monthly.classList.toggle("bold");
+  yearly.classList.toggle("bold");
+
+  pricingPackets.innerHTML = "";
+
+  if (pricingToggle.classList.contains("grey-medium")) {
+    pricingArray.forEach((el) => {
+      price = el.price;
+      html = `
+      <div class='pricing-packets'>
+        <h2 class='pricing-secondary-header'>${el.header}</h2>
+        <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
+        <p class='pricing-price'>${price}&#x20AC;</p>
+        <p class='pricing-price-description'>${el.priceDescription}</p>
+        <p class='account-number'>${el.accountNum}</p>
+        <button class='pricing-btn'>${el.button}</button>
+        <ul>
+       
+    `;
+      el.list.forEach((item) => {
+        html += `
+          <li class='pricing-list'>
+          <span class="material-symbols-outlined pricing-list-icons">
+          done
+          </span> ${item}
+          </li>
+        `;
+      });
+
+      html += `
+        </ul>
+        <p class='pricing-footer'>${el.footer}</p>
+        </div>
+      `;
+
+      pricingPackets.insertAdjacentHTML("beforeend", html);
+    });
+    pricingToggle.style.justifyContent = "start";
+  } else if (pricingToggle.classList.contains("highlight-blue")) {
+    pricingArray.forEach((el) => {
+      price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
+      html = `
+      <div class='pricing-packets'>
+        <h2 class='pricing-secondary-header'>${el.header}</h2>
+        <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
+        <p class='old-price'>${el.oldPrice}</p>
+        <p class='pricing-price'>${price}&#x20AC;</p>
+        <p class='pricing-price-description'>${el.priceDescriptionYear}</p>
+        <p class='account-number'>${el.accountNum}</p>
+        <button class='pricing-btn'>${el.button}</button>
+        <ul>
+       
+    `;
+      el.list.forEach((item) => {
+        html += `
+          <li class='pricing-list'>
+          <span class="material-symbols-outlined pricing-list-icons">
+          done
+          </span> ${item}
+          </li>
+        `;
+      });
+
+      html += `
+        </ul>
+        <p class='pricing-footer'>${el.footer}</p>
+        </div>
+      `;
+
+      pricingPackets.insertAdjacentHTML("beforeend", html);
+    });
+
+    pricingToggle.style.justifyContent = "end";
+  }
 });
 
 // FORM VALIDATION
