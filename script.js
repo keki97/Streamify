@@ -189,6 +189,8 @@ pricingPackets.addEventListener("click", function (e) {
   if (e.target.getAttribute("id") === "0") {
     price = pricingArray[0].price;
     packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
   }
   if (e.target.getAttribute("id") === "1") {
     price = pricingArray[1].price;
