@@ -59,6 +59,10 @@ body {
   font-weight: 600;
 }
 
+.font-lg {
+  font-size: 24px !important;
+}
+
 .full-width {
   width: 100%;
 }

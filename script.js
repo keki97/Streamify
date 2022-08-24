@@ -58,7 +58,7 @@ const pricingArray = [
 const pricingPackets = document.querySelector(".pricing-packets-container");
 let html, price;
 
-pricingArray.forEach((el) => {
+pricingArray.forEach((el, i) => {
   price = el.price;
   html = `
   <div class='pricing-packets'>
@@ -67,7 +67,7 @@ pricingArray.forEach((el) => {
     <p class='pricing-price'>${price}&#x20AC;</p>
     <p class='pricing-price-description'>${el.priceDescription}</p>
     <p class='account-number'>${el.accountNum}</p>
-    <button class='pricing-btn'>${el.button}</button>
+    <button id='${i}' class='pricing-btn'>${el.button}</button>
     <ul>
    
 `;
@@ -105,7 +105,7 @@ pricingToggle.addEventListener("click", function (e) {
   pricingPackets.innerHTML = "";
 
   if (pricingToggle.classList.contains("grey-medium")) {
-    pricingArray.forEach((el) => {
+    pricingArray.forEach((el, i) => {
       price = el.price;
       html = `
       <div class='pricing-packets'>
@@ -114,7 +114,7 @@ pricingToggle.addEventListener("click", function (e) {
         <p class='pricing-price'>${price}&#x20AC;</p>
         <p class='pricing-price-description'>${el.priceDescription}</p>
         <p class='account-number'>${el.accountNum}</p>
-        <button class='pricing-btn'>${el.button}</button>
+        <button id='${i}' class='pricing-btn'>${el.button}</button>
         <ul>
        
     `;
@@ -138,7 +138,7 @@ pricingToggle.addEventListener("click", function (e) {
     });
     pricingToggle.style.justifyContent = "start";
   } else if (pricingToggle.classList.contains("highlight-blue")) {
-    pricingArray.forEach((el) => {
+    pricingArray.forEach((el, i) => {
       price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
       html = `
       <div class='pricing-packets'>
@@ -148,7 +148,7 @@ pricingToggle.addEventListener("click", function (e) {
         <p class='pricing-price'>${price}&#x20AC;</p>
         <p class='pricing-price-description'>${el.priceDescriptionYear}</p>
         <p class='account-number'>${el.accountNum}</p>
-        <button class='pricing-btn'>${el.button}</button>
+        <button id='${i + 3}' class='pricing-btn'>${el.button}</button>
         <ul>
        
     `;
@@ -172,6 +172,59 @@ pricingToggle.addEventListener("click", function (e) {
     });
 
     pricingToggle.style.justifyContent = "end";
+  }
+});
+
+// CHOOSE NOW BUTTON
+////////////////////////
+// CONNECTING PRICING AND FORM SECTIONS
+const packetPrice = document.querySelector(".packet-price");
+const subtotalPrice = document.querySelector(".subtotal");
+const discount = document.querySelector(".discount");
+const totalPrice = document.querySelector(".total");
+
+pricingPackets.addEventListener("click", function (e) {
+  e.preventDefault();
+  price = "";
+  if (e.target.getAttribute("id") === "0") {
+    price = pricingArray[0].price;
+    packetPrice.innerHTML = price + "&#x20AC;";
+  }
+  if (e.target.getAttribute("id") === "1") {
+    price = pricingArray[1].price;
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+  }
+  if (e.target.getAttribute("id") === "2") {
+    price = pricingArray[2].price;
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+  }
+  if (e.target.getAttribute("id") === "3") {
+    price = (pricingArray[0].oldPrice - pricingArray[0].oldPrice * 0.2).toFixed(
+      2
+    );
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+  }
+  if (e.target.getAttribute("id") === "4") {
+    price = (pricingArray[1].oldPrice - pricingArray[1].oldPrice * 0.2).toFixed(
+      2
+    );
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+  }
+  if (e.target.getAttribute("id") === "5") {
+    price = (pricingArray[2].oldPrice - pricingArray[2].oldPrice * 0.2).toFixed(
+      2
+    );
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
   }
 });
 

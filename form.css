@@ -120,10 +120,6 @@
   cursor: pointer;
 }
 
-.total {
-  font-size: 24px;
-}
-
 .flex-column {
   display: flex;
   flex-direction: column;
