@@ -5,66 +5,87 @@
 const pricingArray = [
   {
     header: "individual",
-    secondaryHeader: "1 month free",
+    secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 4.99,
-    priceDescription: "/month after offer period",
+    oldPrice: 4.99 * 12,
+    priceDescription: "/month after <br /> offer period",
     accountNum: "1 account",
     button: "choose now",
-    listOne: "Stream any content",
-    listTwo: "Unlimited streams",
+    list: ["Stream any content", "Unlimited streams"],
     footer:
-      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+      "Terms and conditions apply.<br /> 1 month free not avaliable for users <br /> who have already tried Premium",
   },
 
   {
     header: "family",
-    secondaryHeader: "1 month free",
+    secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 9.99,
-    priceDescription: "/month after offer period",
+    oldPrice: 9.99 * 12,
+    priceDescription: "/month after <br /> offer period",
     accountNum: "Up to 7 accounts",
     button: "choose now",
-    listOne: "7 Premium accounts for family members living under one roof",
-    listTwo: "Block explicit content (Kids mode)",
-    listThree: "Stream any content",
-    listFour: "Unlimited streams",
+    list: [
+      "7 Premium accounts for family members living under one roof",
+      "Block explicit content (Kids mode)",
+      "Stream any content",
+      "Unlimited streams",
+    ],
     footer:
-      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+      "Terms and conditions apply.<br /> 1 month free not avaliable for users <br /> who have already tried Premium",
   },
 
   {
     header: "couple",
-    secondaryHeader: "1 month free",
+    secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 6.99,
-    priceDescription: "/month after offer period",
+    oldPrice: 6.99 * 12,
+    priceDescription: "/month after <br /> offer period",
     accountNum: "2 accounts",
     button: "choose now",
-    listOne: "2 Premium accounts for a couple under one roof",
-    listTwo: "Stream any content",
-    listThree: "Unlimited streams",
+    list: [
+      "2 Premium accounts for a couple under one roof",
+      "Stream any content",
+      "Unlimited streams",
+    ],
     footer:
-      "Terms and conditions apply. 1 month free not avaliable for users who have already tried Premium",
+      "Terms and conditions apply.<br /> 1 month free not avaliable for users <br /> who have already tried Premium",
   },
 ];
 
 const pricingPackets = document.querySelector(".pricing-packets-container");
+let html, price;
 
-const htmlIndividual = `
-<div class='pricing-packets'>
-  <h2>${pricingArray[0].header}</h2>
-  <h3>${pricingArray[0].secondaryHeader}</h3>
-  <p>${pricingArray[0].price}&#x20AC;</p>
-  <p>${pricingArray[0].priceDescription}</p>
-  <p>${pricingArray[0].accountNum}</p>
-  <button>${pricingArray[0].button}</button>
-  <ul>
-    <li>${pricingArray[0].listOne}</li>
-    <li>${pricingArray[0].listTwo}</li>
-  </ul>
-  <p>${pricingArray[0].footer}</p>
-</div>
+pricingArray.forEach((el) => {
+  price = el.price;
+  html = `
+  <div class='pricing-packets'>
+    <h2 class='pricing-secondary-header'>${el.header}</h2>
+    <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
+    <p class='pricing-price'>${price}&#x20AC;</p>
+    <p class='pricing-price-description'>${el.priceDescription}</p>
+    <p class='account-number'>${el.accountNum}</p>
+    <button class='pricing-btn'>${el.button}</button>
+    <ul>
+   
+`;
+  el.list.forEach((item) => {
+    html += `
+      <li class='pricing-list'>
+      <span class="material-symbols-outlined pricing-list-icons">
+      done
+      </span> ${item}
+      </li>
+    `;
+  });
+
+  html += `
+    </ul>
+    <p class='pricing-footer'>${el.footer}</p>
+    </div>
   `;
 
-pricingPackets.insertAdjacentHTML("beforeend", htmlIndividual);
+  pricingPackets.insertAdjacentHTML("beforeend", html);
+});
 
 // FORM VALIDATION
 

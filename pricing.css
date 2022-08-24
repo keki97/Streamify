@@ -1,9 +1,10 @@
 .pricing {
   background-color: #072d49;
+  padding: 136px 0 144px;
 }
 
 .pricing-header {
-  padding-bottom: 64px;
+  padding-bottom: 56px;
 }
 
 .monthly-yearly-container {
@@ -41,12 +42,151 @@
   align-items: center;
   justify-content: center;
   gap: 24px;
+  padding: 16px;
 }
 
 .pricing-packets {
+  width: 336px;
+  height: 584px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 56px 36px 32px;
+  border-radius: 4px;
+  /* background-color: #0e0e213d; */
+}
+
+.pricing-packets:nth-child(odd) {
   background-color: #0e0e213d;
+}
+
+.pricing-packets:nth-child(even) {
+  background-color: #f9f9f9;
+  height: 602px;
+  padding-top: 94px;
+}
+
+.pricing-secondary-header {
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 46px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pricing-secondary-header:nth-child(odd) {
+  color: #f9f9f9;
+}
+
+.pricing-packets:nth-child(even) h2 {
+  color: #27597d;
+}
+
+.pricing-tertiary-header {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #99a8b4;
+  margin-bottom: 40px;
+}
+
+.tertiary-header-span {
+  color: #10b0e7;
+}
+
+.pricing-price {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 44px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #f9f9f9;
+}
+
+.pricing-packets:nth-child(even) p.pricing-price,
+.pricing-packets:nth-child(even) p.account-number {
+  color: #27597d;
+}
+
+.pricing-price-description {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  color: #99a8b4;
+  margin-bottom: 16px;
+}
+
+.account-number {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #f9f9f9;
+  margin-bottom: 32px;
+}
+
+.pricing-btn {
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-transform: uppercase;
+  background-color: rgba(14, 14, 33, 0.24);
+  border-radius: 4px;
+  padding: 12px 40px;
+  color: #f9f9f9;
+  border: 2px solid #10b0e7;
+  filter: drop-shadow(0px 4px 8px rgba(101, 119, 133, 0.24));
+  border-radius: 4px;
+  margin-bottom: 44px;
+  cursor: pointer;
+}
+
+.pricing-packets:nth-child(even) button {
+  background: #e76a10;
+  border: none;
+  box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
+}
+
+.pricing-packets ul {
+  margin-bottom: auto;
+  list-style: none;
+}
+
+.pricing-packets:nth-child(even) ul {
+  margin-bottom: 16px;
+}
+
+.pricing-list {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #f9f9f9;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.pricing-packets:nth-child(even) li {
+  color: #27597d;
+}
+
+.pricing-list-icons {
+  width: 12px;
+  height: 9px;
+  color: #10b0e7;
+  align-self: flex-start;
+}
+
+.pricing-footer {
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #99a8b4;
 }
