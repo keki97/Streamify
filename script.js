@@ -57,18 +57,17 @@ const pricingArray = [
 
 const pricingPackets = document.querySelector(".pricing-packets-container");
 let html, price;
-const circle = `
-<div class='circle-container'>
-    <div class='slider-circle'></div>
-    <div class='slider-circle active'></div>
-    <div class='slider-circle'></div>
-  </div>
-`;
+let circle = "";
 
 pricingArray.forEach((el, i) => {
   price = el.price;
+
+  circle += `
+      <div class='slider-circle' data-id='${i}'></div>
+  `;
+
   html = `
-  <div class='pricing-packets'>
+  <div class='pricing-packets' id='pricing-packet-${i}'>
     <h2 class='pricing-secondary-header'>${el.header}</h2>
     <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
     <p class='pricing-price'>${price}&#x20AC;</p>
@@ -96,7 +95,28 @@ pricingArray.forEach((el, i) => {
 
   pricingPackets.insertAdjacentHTML("beforeend", html);
 });
-pricingPackets.insertAdjacentHTML("beforeend", circle);
+const circleContainer = document.querySelector(".circle-container");
+
+circleContainer.insertAdjacentHTML("beforeend", circle);
+
+// pricingPackets.insertAdjacentHTML("beforeend", circle);
+
+// SLIDER
+
+const goToSlide = function (slide) {
+  document.querySelectorAll(".pricing-packets").forEach((s, i) => {
+    console.log(s);
+    s.style.transform = `translateX(${100 * (i - slide)}%)`;
+  });
+};
+
+circleContainer.addEventListener("click", function (e) {
+  if (e.target.classList.contains("slider-circle")) {
+    const slide = e.target.getAttribute("data-id");
+    goToSlide(slide);
+    console.log(slide);
+  }
+});
 
 // TOGGLE MONTH AND YEAR PAYMENT
 
@@ -110,11 +130,13 @@ pricingToggle.addEventListener("click", function (e) {
   monthly.classList.toggle("bold");
   yearly.classList.toggle("bold");
 
-  pricingPackets.innerHTML = "";
+  pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
 
   if (pricingToggle.classList.contains("grey-medium")) {
     pricingArray.forEach((el, i) => {
+      console.log(circle);
       price = el.price;
+
       html = `
       <div class='pricing-packets'>
         <h2 class='pricing-secondary-header'>${el.header}</h2>
@@ -148,6 +170,7 @@ pricingToggle.addEventListener("click", function (e) {
   } else if (pricingToggle.classList.contains("highlight-blue")) {
     pricingArray.forEach((el, i) => {
       price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
+
       html = `
       <div class='pricing-packets'>
         <h2 class='pricing-secondary-header'>${el.header}</h2>
@@ -178,7 +201,6 @@ pricingToggle.addEventListener("click", function (e) {
 
       pricingPackets.insertAdjacentHTML("beforeend", html);
     });
-
     pricingToggle.style.justifyContent = "end";
   }
 });
@@ -194,13 +216,14 @@ const totalPrice = document.querySelector(".total");
 pricingPackets.addEventListener("click", function (e) {
   e.preventDefault();
   const formSectionCoords = form.getBoundingClientRect();
-
-  window,
-    scrollTo({
-      left: formSectionCoords.left + window.pageXOffset,
-      top: formSectionCoords.top + window.pageYOffset,
-      behavior: "smooth",
-    });
+  if (e.target.classList.contains("pricing-btn")) {
+    window,
+      scrollTo({
+        left: formSectionCoords.left + window.pageXOffset,
+        top: formSectionCoords.top + window.pageYOffset,
+        behavior: "smooth",
+      });
+  }
   price = "";
   if (e.target.getAttribute("id") === "0") {
     price = pricingArray[0].price;
@@ -354,3 +377,32 @@ form.addEventListener("click", function (e) {
     }
   }
 });
+
+// Streamers
+
+const streamers = document.querySelector(".streamers");
+let users;
+
+const renderUsers = function (user) {
+  users.forEach(function (el, i) {
+    const userHtml = `
+    <div class='user-container'>
+      <img src='${el.avatarUrl}' class='user-img'/>
+      <p class='user-name'>${el.name}</p>
+      <p class='user-email'>(${el.email})</p>
+      <p class='user-status'>${el.statusMessage}</p>
+    </div>
+    `;
+    streamers.insertAdjacentHTML("beforeend", userHtml);
+  });
+};
+
+const getUsers = async function () {
+  const res = await fetch("https://mockend.com/Infomedia-bl/fake-api/users");
+  const data = await res.json();
+  users = data;
+  console.log(users);
+  renderUsers(users);
+};
+
+getUsers();

@@ -75,11 +75,11 @@
   /* background-color: #0e0e213d; */
 }
 
-.pricing-packets:nth-child(odd) {
+.pricing-packets:nth-child(even) {
   background-color: #0e0e213d;
 }
 
-.pricing-packets:nth-child(even) {
+.pricing-packets:nth-child(odd) {
   background-color: #f9f9f9;
   height: 622px;
 }
@@ -88,16 +88,13 @@
   font-weight: 800;
   font-size: 38px;
   line-height: 46px;
+  color: #f9f9f9;
   text-align: center;
   text-transform: uppercase;
   margin-top: 56px;
 }
 
-.pricing-secondary-header:nth-child(odd) {
-  color: #f9f9f9;
-}
-
-.pricing-packets:nth-child(even) h2 {
+.pricing-packets:nth-child(odd) h2 {
   color: #27597d;
   margin-top: 64px;
 }
@@ -125,8 +122,8 @@
   color: #f9f9f9;
 }
 
-.pricing-packets:nth-child(even) p.pricing-price,
-.pricing-packets:nth-child(even) p.account-number {
+.pricing-packets:nth-child(odd) p.pricing-price,
+.pricing-packets:nth-child(odd) p.account-number {
   color: #27597d;
 }
 
@@ -139,7 +136,7 @@
   color: #e76a10;
 }
 
-.pricing-packets:nth-child(even) p.old-price {
+.pricing-packets:nth-child(odd) p.old-price {
   top: 154px;
 }
 
@@ -185,14 +182,14 @@
   box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
 }
 
-.pricing-packets:nth-child(even) button {
+.pricing-packets:nth-child(odd) button {
   background: #e76a10;
   border: none;
   box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
   transition: all 0.5s;
 }
 
-.pricing-packets:nth-child(even) button:hover {
+.pricing-packets:nth-child(odd) button:hover {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
     #e74710;
 }
@@ -202,7 +199,7 @@
   list-style: none;
 }
 
-.pricing-packets:nth-child(even) ul {
+.pricing-packets:nth-child(odd) ul {
   margin-bottom: 16px;
 }
 
@@ -217,7 +214,7 @@
   gap: 16px;
 }
 
-.pricing-packets:nth-child(even) li {
+.pricing-packets:nth-child(odd) li {
   color: #27597d;
 }
 
@@ -241,12 +238,11 @@
 }
 
 .circle-container {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 16px;
   position: absolute;
   bottom: -32px;
-  display: none;
 }
 
 .slider-circle {
@@ -260,4 +256,30 @@
   width: 20px;
   height: 20px;
   background: #10b0e7;
+}
+
+@media (max-width: 1057px) {
+  .circle-container {
+    display: flex;
+  }
+
+  /* .pricing-packets-container {
+    gap: 0;
+    overflow: hidden;
+  }
+
+  #pricing-packet-0 {
+    transform: translateX(-350%);
+    position: relative;
+    left: 336px;
+  }
+  #pricing-packet-1 {
+    transform: translateX(0%);
+    z-index: 1;
+  }
+  #pricing-packet-2 {
+    transform: translateX(350%);
+    position: relative;
+    left: -336px;
+  } */
 }
