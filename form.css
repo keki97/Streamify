@@ -86,6 +86,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 64px;
 }
 
@@ -193,3 +194,76 @@
   left: 12px;
   color: #657785;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1120px) {
+  .details {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .details {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 64px;
+    padding: 72px 16px;
+  }
+
+  .form-header {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cardholder-container {
+    max-width: 400px;
+  }
+
+  .form-header {
+    font-size: 20px;
+  }
+
+  .input-fields {
+    font-size: 16px;
+  }
+
+  .cardholder-info {
+    font-size: 16px;
+  }
+
+  .input-fields-secondary {
+    font-size: 16px;
+  }
+
+  .payment-btn {
+    font-size: 16px;
+  }
+
+  .secondary-blue {
+    font-size: 16px;
+  }
+
+  .card-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .horizontal-line {
+    width: 400px;
+  }
+  .icon {
+    position: absolute;
+    top: 35px;
+    left: 12px;
+    color: #657785;
+  }
+}
+
+@media (max-width: 432px) {
+  .horizontal-line {
+    width: 100%;
+  }
+} ;

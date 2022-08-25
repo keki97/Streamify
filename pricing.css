@@ -59,6 +59,7 @@
   justify-content: center;
   gap: 24px;
   padding: 16px;
+  position: relative;
 }
 
 .pricing-packets {
@@ -173,15 +174,27 @@
   color: #f9f9f9;
   border: 2px solid #10b0e7;
   filter: drop-shadow(0px 4px 8px rgba(101, 119, 133, 0.24));
-  border-radius: 4px;
   margin-bottom: 44px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pricing-btn:hover {
+  background: rgba(249, 249, 249, 0.16);
+  border: 2px solid #10b0e7;
+  box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
 }
 
 .pricing-packets:nth-child(even) button {
   background: #e76a10;
   border: none;
   box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
+  transition: all 0.5s;
+}
+
+.pricing-packets:nth-child(even) button:hover {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
+    #e74710;
 }
 
 .pricing-packets ul {
@@ -225,4 +238,26 @@
 
 .pricing-packets p.pricing-footer {
   margin-bottom: 24px;
+}
+
+.circle-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: absolute;
+  bottom: -32px;
+  display: none;
+}
+
+.slider-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ced8e1;
+}
+
+.active {
+  width: 20px;
+  height: 20px;
+  background: #10b0e7;
 }

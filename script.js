@@ -57,6 +57,13 @@ const pricingArray = [
 
 const pricingPackets = document.querySelector(".pricing-packets-container");
 let html, price;
+const circle = `
+<div class='circle-container'>
+    <div class='slider-circle'></div>
+    <div class='slider-circle active'></div>
+    <div class='slider-circle'></div>
+  </div>
+`;
 
 pricingArray.forEach((el, i) => {
   price = el.price;
@@ -89,6 +96,7 @@ pricingArray.forEach((el, i) => {
 
   pricingPackets.insertAdjacentHTML("beforeend", html);
 });
+pricingPackets.insertAdjacentHTML("beforeend", circle);
 
 // TOGGLE MONTH AND YEAR PAYMENT
 
@@ -185,6 +193,14 @@ const totalPrice = document.querySelector(".total");
 
 pricingPackets.addEventListener("click", function (e) {
   e.preventDefault();
+  const formSectionCoords = form.getBoundingClientRect();
+
+  window,
+    scrollTo({
+      left: formSectionCoords.left + window.pageXOffset,
+      top: formSectionCoords.top + window.pageYOffset,
+      behavior: "smooth",
+    });
   price = "";
   if (e.target.getAttribute("id") === "0") {
     price = pricingArray[0].price;
@@ -251,8 +267,8 @@ const errorMessageCoupon = document.querySelector(".coupon-error");
 
 // FUNCTIONS
 
-const isName = function (name) {
-  return /\w+\s\w+/.test(name);
+const isNameOrAddress = function (input) {
+  return /\w+\s\w+/.test(input);
 };
 
 const isEmail = function (email) {
@@ -262,7 +278,7 @@ const isEmail = function (email) {
 };
 
 const isDate = function (date) {
-  return /^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(date);
+  return /^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(date);
 };
 
 const isCardNum = function (cardNum) {
@@ -280,7 +296,7 @@ form.addEventListener("click", function (e) {
     const dateInput = dateEl.value;
     const couponInput = couponEl.value;
 
-    if (!isName(nameInput)) {
+    if (!isNameOrAddress(nameInput)) {
       errorMessageName.style.opacity = "1";
       nameEl.classList.add("error");
     } else {
@@ -288,7 +304,7 @@ form.addEventListener("click", function (e) {
       nameEl.classList.remove("error");
     }
 
-    if (addressInput.length === 0) {
+    if (!isNameOrAddress(addressInput)) {
       errorMessageAddress.style.opacity = "1";
       addressEl.classList.add("error");
     } else {
