@@ -59,6 +59,11 @@ body {
   color: #072d49;
 }
 
+.header-font-lg {
+  font-size: 72px !important;
+  text-align: left !important;
+}
+
 .bold {
   font-weight: 600;
 }

@@ -127,27 +127,6 @@
   background: #e76a10;
 }
 
-/* ::-webkit-scrollbar {
-  width: 25px;
-  height: 100%;
-}
-
-::-webkit-scrollbar-track {
-  background: #10b0e7;
-}
-
-::-webkit-scrollbar-thumb { */
-/* background: #f9f9f9; */
-/* border: 1px solid hsl(120 50% 50% / 1); */
-/* border-radius: 100vw; */
-/* } */
-/* ::-webkit-scrollbar-thumb:hover {
-  background: hsl(120 100% 5% / 1);
-} */
-
-/* ::-webkit-scrollbar {
-} */
-
 @media (max-width: 870px) {
   .secondary-header {
     font-size: 48px;
