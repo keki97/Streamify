@@ -1,5 +1,22 @@
 "use strict";
 
+const smoothScrolling = function () {
+  formSectionCoords = form.getBoundingClientRect();
+  window.scrollTo({
+    left: formSectionCoords.left + window.pageXOffset,
+    top: formSectionCoords.top + window.pageYOffset,
+    behavior: "smooth",
+  });
+};
+
+// HEADER
+
+const headerBtn = document.querySelector(".header-btn");
+
+headerBtn.addEventListener("click", function () {
+  smoothScrolling();
+});
+
 // PRICING
 
 const pricingArray = [
@@ -208,6 +225,8 @@ pricingToggle.addEventListener("click", function (e) {
 // CHOOSE NOW BUTTON
 ////////////////////////
 // CONNECTING PRICING AND FORM SECTIONS
+let formSectionCoords;
+
 const packetPrice = document.querySelector(".packet-price");
 const subtotalPrice = document.querySelector(".subtotal");
 const discount = document.querySelector(".discount");
@@ -215,14 +234,9 @@ const totalPrice = document.querySelector(".total");
 
 pricingPackets.addEventListener("click", function (e) {
   e.preventDefault();
-  const formSectionCoords = form.getBoundingClientRect();
+  formSectionCoords = form.getBoundingClientRect();
   if (e.target.classList.contains("pricing-btn")) {
-    window,
-      scrollTo({
-        left: formSectionCoords.left + window.pageXOffset,
-        top: formSectionCoords.top + window.pageYOffset,
-        behavior: "smooth",
-      });
+    smoothScrolling();
   }
   price = "";
   if (e.target.getAttribute("id") === "0") {
