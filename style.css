@@ -71,6 +71,10 @@ body {
   width: 75%;
 }
 
+.margin-btm-lg {
+  margin-bottom: 80px !important;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

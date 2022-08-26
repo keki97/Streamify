@@ -381,19 +381,45 @@ form.addEventListener("click", function (e) {
 // Streamers
 
 const streamers = document.querySelector(".streamers");
-let users;
+let users, id;
 
 const renderUsers = function (user) {
   users.forEach(function (el, i) {
     const userHtml = `
     <div class='user-container'>
+      <div>
       <img src='${el.avatarUrl}' class='user-img'/>
+      <div class='status-btn'></div>
+      </div>
+      <div class='user-info'>
       <p class='user-name'>${el.name}</p>
       <p class='user-email'>(${el.email})</p>
       <p class='user-status'>${el.statusMessage}</p>
+      </div>
     </div>
     `;
+
+    console.log(el.activity);
     streamers.insertAdjacentHTML("beforeend", userHtml);
+
+    if (el.activity === "online") {
+      document.querySelectorAll(".status-btn")[i].style.backgroundColor =
+        "#1AD838";
+      document.querySelectorAll(".user-img")[i].style.border =
+        "2px solid #1AD838";
+    }
+    if (el.activity === "offline") {
+      document.querySelectorAll(".status-btn")[i].style.backgroundColor =
+        "#99A8B4";
+      document.querySelectorAll(".user-img")[i].style.border =
+        "2px solid #99A8B4";
+    }
+    if (el.activity === "streaming") {
+      document.querySelectorAll(".status-btn")[i].style.backgroundColor =
+        "#E76A10";
+      document.querySelectorAll(".user-img")[i].style.border =
+        "2px solid #E76A10";
+    }
   });
 };
 
@@ -401,8 +427,23 @@ const getUsers = async function () {
   const res = await fetch("https://mockend.com/Infomedia-bl/fake-api/users");
   const data = await res.json();
   users = data;
-  console.log(users);
   renderUsers(users);
 };
 
 getUsers();
+
+// if (el.activity === "online") {
+//   document.querySelectorAll(".status-btn").forEach((online) => {
+//     online.style.backgroundColor = "orange";
+//   });
+// }
+// if (el.activity === "offline") {
+//   document.querySelectorAll(".status-btn").forEach((online) => {
+//     online.style.backgroundColor = "grey";
+//   });
+// }
+// if (el.activity === "streaming") {
+//   document.querySelectorAll(".status-btn").forEach((online) => {
+//     online.style.backgroundColor = "black";
+//   });
+// }
