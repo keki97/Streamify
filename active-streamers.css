@@ -53,6 +53,12 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+}
+
+.img-status-container {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   position: relative;
 }
 
@@ -70,8 +76,8 @@
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
-  top: 55px;
-  left: 130px;
+  bottom: 0;
+  right: 0;
 }
 
 .user-name {
@@ -184,9 +190,19 @@
     border-color: #10b0e7;
   }
 
+  .img-status-container {
+    width: 48px;
+    height: 48px;
+  }
+
   .user-img {
     width: 48px;
     height: 48px;
+  }
+
+  .status-btn {
+    width: 12px;
+    height: 12px;
   }
 
   .user-name {

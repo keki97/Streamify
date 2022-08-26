@@ -378,16 +378,16 @@ form.addEventListener("click", function (e) {
   }
 });
 
-// Streamers
+// STREAMERS
 
 const streamers = document.querySelector(".streamers");
 let users, id;
 
-const renderUsers = function (user) {
+const renderUsers = function () {
   users.forEach(function (el, i) {
     const userHtml = `
     <div class='user-container'>
-      <div>
+      <div class='img-status-container'>
       <img src='${el.avatarUrl}' class='user-img'/>
       <div class='status-btn'></div>
       </div>
@@ -398,8 +398,6 @@ const renderUsers = function (user) {
       </div>
     </div>
     `;
-
-    console.log(el.activity);
     streamers.insertAdjacentHTML("beforeend", userHtml);
 
     if (el.activity === "online") {
@@ -427,23 +425,73 @@ const getUsers = async function () {
   const res = await fetch("https://mockend.com/Infomedia-bl/fake-api/users");
   const data = await res.json();
   users = data;
-  renderUsers(users);
+  renderUsers();
 };
 
 getUsers();
 
-// if (el.activity === "online") {
-//   document.querySelectorAll(".status-btn").forEach((online) => {
-//     online.style.backgroundColor = "orange";
-//   });
-// }
-// if (el.activity === "offline") {
-//   document.querySelectorAll(".status-btn").forEach((online) => {
-//     online.style.backgroundColor = "grey";
-//   });
-// }
-// if (el.activity === "streaming") {
-//   document.querySelectorAll(".status-btn").forEach((online) => {
-//     online.style.backgroundColor = "black";
-//   });
-// }
+// COMMENTS
+
+const commentsContainer = document.querySelector(".comments-container");
+
+let i, commentHTML, curData;
+const renderComments = function (data) {
+  for (i = 0; i < 5; i++) {
+    curData = data;
+    commentHTML = `
+    <div class='single-comment'>
+    <img src='${data[i].avatarUrl}' class='comment-img' />
+    <div>
+    <div class='name-date-container'>
+    <p class='comment-name'>${data[i].name}</p>
+    <p class='comment-date'>${data[i].postedAt}</p>
+      </div>
+        <p class='comment-email'>${data[i].email}</p>
+        <p class='comment-content'>${data[i].comment}</p>
+      </div>
+    </div>
+    `;
+    commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
+  }
+};
+
+const getComments = async function () {
+  const res = await fetch("https://mockend.com/Infomedia-bl/fake-api/comments");
+  const data = await res.json();
+
+  renderComments(data);
+};
+
+getComments();
+
+// SHOW MORE COMMENTS
+
+const showMoreBtn = document.querySelector(".show-more-comments");
+const noMoreComments = document.querySelector(".no-more-comments");
+
+showMoreBtn.addEventListener("click", function () {
+  if (i < 100) {
+    commentsContainer.innerHTML = "";
+    for (let j = 0; j < i + 5; j++) {
+      commentHTML = `
+    <div class='single-comment'>
+    <img src='${curData[j].avatarUrl}' class='comment-img' />
+    <div>
+    <div class='name-date-container'>
+    <p class='comment-name'>${curData[j].name}</p>
+    <p class='comment-date'>${curData[j].postedAt}</p>
+      </div>
+        <p class='comment-email'>${curData[j].email}</p>
+        <p class='comment-content'>${curData[j].comment}</p>
+      </div>
+    </div>
+    `;
+      commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
+    }
+    i = i + 5;
+  } else {
+    showMoreBtn.style.background = "#657785";
+    showMoreBtn.style.boxShadow = "0px 4px 8px rgba(101, 119, 133, 0.24)";
+    noMoreComments.style.display = "block";
+  }
+});

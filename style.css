@@ -55,6 +55,10 @@ body {
   background: #10b0e7;
 }
 
+.secondary-dark-blue {
+  color: #072d49;
+}
+
 .bold {
   font-weight: 600;
 }

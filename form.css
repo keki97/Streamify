@@ -119,6 +119,12 @@
   box-shadow: 0px 4px 8px rgba(101, 119, 133, 0.24);
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.payment-btn:hover {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
+    #e74710;
 }
 
 .flex-column {
