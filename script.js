@@ -421,6 +421,7 @@ form.addEventListener("click", function (e) {
 
 const streamers = document.querySelector(".streamers");
 let users, id;
+users = activeUsers;
 
 const renderUsers = function () {
   users.forEach(function (el, i) {
@@ -466,7 +467,7 @@ const getUsers = async function () {
   users = data;
   renderUsers();
 };
-
+renderUsers();
 getUsers();
 
 // COMMENTS
@@ -476,17 +477,17 @@ const commentsContainer = document.querySelector(".comments-container");
 let i, commentHTML, curData;
 const renderComments = function (data) {
   for (i = 0; i < 5; i++) {
-    curData = data;
+    curData = comments;
     commentHTML = `
     <div class='single-comment'>
-    <img src='${data[i].avatarUrl}' class='comment-img' />
+    <img src='${comments[i].avatarUrl}' class='comment-img' />
     <div>
     <div class='name-date-container'>
-    <p class='comment-name'>${data[i].name}</p>
-    <p class='comment-date'>${data[i].postedAt}</p>
+    <p class='comment-name'>${comments[i].name}</p>
+    <p class='comment-date'>${comments[i].postedAt}</p>
       </div>
-        <p class='comment-email'>${data[i].email}</p>
-        <p class='comment-content'>${data[i].comment}</p>
+        <p class='comment-email'>${comments[i].email}</p>
+        <p class='comment-content'>${comments[i].comment}</p>
       </div>
     </div>
     `;
@@ -500,6 +501,7 @@ const getComments = async function () {
 
   renderComments(data);
 };
+renderComments(comments);
 
 getComments();
 
