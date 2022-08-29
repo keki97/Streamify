@@ -12,9 +12,36 @@ const smoothScrolling = function () {
 // HEADER
 
 const headerBtn = document.querySelector(".header-btn");
+const getDiscountBtn = document.querySelector(".modal-btn");
+const modalEmail = document.querySelector("#modal-email");
+const header = document.querySelector(".header");
+const headerModal = document.querySelector(".header-modal");
+const overlay = document.querySelector(".overlay");
 
 headerBtn.addEventListener("click", function () {
   smoothScrolling();
+});
+
+getDiscountBtn.addEventListener("click", function () {
+  const modalEmailInput = document.querySelector("#modal-email").value;
+  if (!isEmail(modalEmailInput)) {
+    modalEmail.classList.add("error");
+    document.querySelector(".modal-email-error").style.opacity = "1";
+  } else {
+    modalEmail.classList.remove("error");
+    document.querySelector(".modal-email-error").style.opacity = "0";
+  }
+});
+
+header.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (
+    e.target.classList.contains("modal-close") ||
+    e.target.classList.contains("overlay")
+  ) {
+    headerModal.style.display = "none";
+    overlay.style.display = "none";
+  }
 });
 
 // PRICING
@@ -508,4 +535,54 @@ showMoreBtn.addEventListener("click", function () {
     showMoreBtn.style.boxShadow = "0px 4px 8px rgba(101, 119, 133, 0.24)";
     noMoreComments.style.display = "block";
   }
+});
+
+// WIDGET ACTIVE USERS FIRST
+
+const widgetButton = document.querySelector(".widget-btn");
+const widgetModal = document.querySelector(".widget");
+
+widgetButton.addEventListener("click", function () {
+  widgetModal.style.display = "grid";
+  users.forEach((el, i) => {
+    const activeUsersFirst = `
+    <div class='user-container'>
+        <div class='img-status-container'>
+        <img src='${users[i].avatarUrl}' alt='User number ${i}' class='active-user-img'/>
+        <div class='active-status-btn'></div>
+        </div>
+        <div class='user-info'>
+        <p class='user-name'>${users[i].name}</p>
+        <p class='user-email'>(${users[i].email})</p>
+        <p class='user-status'>${users[i].statusMessage}</p>
+        <p class='user-status'>${users[i].activity}</p>
+        </div>
+        </div>
+        `;
+
+    el.activity === "online"
+      ? widgetModal.insertAdjacentHTML("afterbegin", activeUsersFirst)
+      : widgetModal.insertAdjacentHTML("beforeend", activeUsersFirst);
+
+    if (el.activity === "online") {
+      // document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
+      //   "#1AD838";
+      // document.querySelectorAll(".active-user-img")[i].style.border =
+      //   "2px solid #1AD838";
+
+      document.querySelectorAll(".active-status-btn")[i].innerHTML = "?";
+    }
+    // if (el.activity === "offline") {
+    //   document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
+    //     "#99A8B4";
+    //   document.querySelectorAll(".active-user-img")[i].style.border =
+    //     "2px solid #99A8B4";
+    // }
+    // if (el.activity === "streaming") {
+    //   document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
+    //     "#E76A10";
+    //   document.querySelectorAll(".active-user-img")[i].style.border =
+    //     "2px solid #E76A10";
+    // }
+  });
 });

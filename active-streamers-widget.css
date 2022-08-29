@@ -1,0 +1,56 @@
+.widget-btn {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  background: #10b0e7;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.24);
+  border-radius: 104px;
+  position: fixed;
+  bottom: 96px;
+  right: 96px;
+}
+
+.widget-container {
+  padding: 56px;
+  /* background-color: #072d49; */
+}
+
+.widget {
+  width: 1000px;
+  height: 800px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(5, 21, 53);
+  border-radius: 8px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 48px;
+  overflow-y: scroll;
+  display: none;
+}
+
+.active-status-btn {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.active-user-img {
+  width: 72px;
+  height: 72px;
+  /* border: 2px solid #99a8b4; */
+  border-radius: 50%;
+  margin-bottom: 16px;
+}

@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="pricing.css" />
     <link rel="stylesheet" href="form.css" />
-    <link rel="stylesheet" href="active-streamers.css" />
+    <link rel="stylesheet" href="active-streamers-widget.css" />
+    <link rel="stylesheet" href="streamers.css" />
     <link rel="stylesheet" href="comments.css" />
     <link rel="stylesheet" href="header.css" />
 
@@ -32,12 +33,22 @@
         <button class="header-btn">Become Pro Now</button>
     </div>
     <div class="header-modal">
-      <img src="images/modal-img.png" alt="Gift">
-      <h3 class="modal-tertiary-header">Take 50% off your first purchase</h3>
-      <p>Enter email address below to get started</p>
-      <input type="email" placeholder="Email address">
-      <button class="modal-btn">Get discount now</button>
+      <img src="images/modal-img.png" alt="Gift" class="modal-img">
+      <h3 class="modal-tertiary-header">Take <span class="modal-tertiary-header-span">50% off</span> your first purchase</h3>
+      <p class="modal-text">Enter email address below to get started</p>
+      <div class="input-container">
+      <input type="email" id="modal-email" placeholder="Email address">
+      <span class="material-symbols-outlined modal-icon">
+        mail
+        </span>
     </div>
+      <p class="error-message modal-email-error">Please enter a valid email address!</p>
+      <button class="modal-btn">Get discount now</button>
+      <span class="material-symbols-outlined modal-close">
+        close
+        </span>
+    </div>
+    <div class="overlay"></div>
     </header>
 
     <!-- SECTION COMMENTS -->
@@ -229,6 +240,14 @@
       </div>
     </section>
 
+    <!-- WIDGET -->
+
+    <div class="widget-btn">
+      <img src="images/active-users.png" alt="Active-users icon">
+    </div>
+    <div class="widget-container">
+      <div class="widget"></div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
