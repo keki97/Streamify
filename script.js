@@ -33,7 +33,7 @@ getDiscountBtn.addEventListener("click", function () {
   }
 });
 
-header.addEventListener("click", function (e) {
+document.body.addEventListener("click", function (e) {
   e.preventDefault();
   if (
     e.target.classList.contains("modal-close") ||
@@ -41,6 +41,8 @@ header.addEventListener("click", function (e) {
   ) {
     headerModal.style.display = "none";
     overlay.style.display = "none";
+    widgetModalContainer.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 });
 
@@ -149,7 +151,6 @@ circleContainer.insertAdjacentHTML("beforeend", circle);
 
 const goToSlide = function (slide) {
   document.querySelectorAll(".pricing-packets").forEach((s, i) => {
-    console.log(s);
     s.style.transform = `translateX(${100 * (i - slide)}%)`;
   });
 };
@@ -158,7 +159,6 @@ circleContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("slider-circle")) {
     const slide = e.target.getAttribute("data-id");
     goToSlide(slide);
-    console.log(slide);
   }
 });
 
@@ -178,7 +178,6 @@ pricingToggle.addEventListener("click", function (e) {
 
   if (pricingToggle.classList.contains("grey-medium")) {
     pricingArray.forEach((el, i) => {
-      console.log(circle);
       price = el.price;
 
       html = `
@@ -350,7 +349,6 @@ const isCardNum = function (cardNum) {
 };
 
 form.addEventListener("click", function (e) {
-  // console.log(e.target);
   if (e.target.classList.contains("payment-btn")) {
     const nameInput = nameEl.value;
     const addressInput = addressEl.value;
@@ -541,48 +539,66 @@ showMoreBtn.addEventListener("click", function () {
 
 const widgetButton = document.querySelector(".widget-btn");
 const widgetModal = document.querySelector(".widget");
+const widgetModalContainer = document.querySelector(".widget-container");
 
 widgetButton.addEventListener("click", function () {
-  widgetModal.style.display = "grid";
-  users.forEach((el, i) => {
+  widgetModal.innerHTML = "";
+  overlay.style.display = "block";
+  document.body.style.overflow = "hidden";
+  widgetModalContainer.style.display = "block";
+  // users.forEach((el, i) => {
+  //   const activeUsersFirst = `
+  //   <div class='user-container'>
+  //       <div class='img-status-container'>
+  //       <img src='${users[i].avatarUrl}' alt='User number ${i}' class='active-user-img'/>
+  //       <div class='active-status-btn'></div>
+  //       </div>
+  //       <div class='user-info'>
+  //       <p class='user-name'>${users[i].name}</p>
+  //       <p class='user-email'>(${users[i].email})</p>
+  //       <p class='user-status'>${users[i].statusMessage}</p>
+  //       <p class='user-status'>${users[i].activity}</p>
+  //       </div>
+  //       </div>
+  //       `;
+
+  activeUsers.forEach((el, i) => {
     const activeUsersFirst = `
-    <div class='user-container'>
-        <div class='img-status-container'>
-        <img src='${users[i].avatarUrl}' alt='User number ${i}' class='active-user-img'/>
-        <div class='active-status-btn'></div>
-        </div>
-        <div class='user-info'>
-        <p class='user-name'>${users[i].name}</p>
-        <p class='user-email'>(${users[i].email})</p>
-        <p class='user-status'>${users[i].statusMessage}</p>
-        <p class='user-status'>${users[i].activity}</p>
-        </div>
-        </div>
-        `;
+      <div class='user-container'>
+          <div class='img-status-container'>
+          <img src='${activeUsers[i].avatarUrl}' alt='User number ${i}' class='active-user-img'/>
+          <div class='active-status-btn'></div>
+          </div>
+          <div class='user-info'>
+          <p class='user-name'>${activeUsers[i].name}</p>
+          <p class='user-email'>(${activeUsers[i].email})</p>
+          <p class='user-status'>${activeUsers[i].statusMessage}</p>
+          <p class='user-status'>${activeUsers[i].activity}</p>
+          </div>
+          </div>
+          `;
 
     el.activity === "online"
       ? widgetModal.insertAdjacentHTML("afterbegin", activeUsersFirst)
       : widgetModal.insertAdjacentHTML("beforeend", activeUsersFirst);
 
     if (el.activity === "online") {
-      // document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
-      //   "#1AD838";
-      // document.querySelectorAll(".active-user-img")[i].style.border =
-      //   "2px solid #1AD838";
-
-      document.querySelectorAll(".active-status-btn")[i].innerHTML = "?";
+      document.querySelectorAll(".active-status-btn")[0].style.backgroundColor =
+        "#1AD838";
+      document.querySelectorAll(".active-user-img")[0].style.border =
+        "2px solid #1AD838";
     }
-    // if (el.activity === "offline") {
-    //   document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
-    //     "#99A8B4";
-    //   document.querySelectorAll(".active-user-img")[i].style.border =
-    //     "2px solid #99A8B4";
-    // }
-    // if (el.activity === "streaming") {
-    //   document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
-    //     "#E76A10";
-    //   document.querySelectorAll(".active-user-img")[i].style.border =
-    //     "2px solid #E76A10";
-    // }
+    if (el.activity === "offline") {
+      document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
+        "#99A8B4";
+      document.querySelectorAll(".active-user-img")[i].style.border =
+        "2px solid #99A8B4";
+    }
+    if (el.activity === "streaming") {
+      document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
+        "#E76A10";
+      document.querySelectorAll(".active-user-img")[i].style.border =
+        "2px solid #E76A10";
+    }
   });
 });
