@@ -17,6 +17,7 @@ const modalEmail = document.querySelector("#modal-email");
 const header = document.querySelector(".header");
 const headerModal = document.querySelector(".header-modal");
 const overlay = document.querySelector(".overlay");
+const successModal = document.querySelector(".header-success-modal");
 
 headerBtn.addEventListener("click", function () {
   smoothScrolling();
@@ -30,6 +31,8 @@ getDiscountBtn.addEventListener("click", function () {
   } else {
     modalEmail.classList.remove("error");
     document.querySelector(".modal-email-error").style.opacity = "0";
+    headerModal.style.display = "none";
+    successModal.style.display = "block";
   }
 });
 
@@ -37,11 +40,13 @@ document.body.addEventListener("click", function (e) {
   e.preventDefault();
   if (
     e.target.classList.contains("modal-close") ||
-    e.target.classList.contains("overlay")
+    e.target.classList.contains("overlay") ||
+    e.target.classList.contains("success-btn")
   ) {
     headerModal.style.display = "none";
     overlay.style.display = "none";
     widgetModalContainer.style.display = "none";
+    successModal.style.display = "none";
     document.body.style.overflow = "auto";
   }
 });
@@ -503,7 +508,7 @@ const getComments = async function () {
 };
 renderComments(comments);
 
-getComments();
+// getComments();
 
 // SHOW MORE COMMENTS
 
