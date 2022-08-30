@@ -609,7 +609,6 @@ widgetButton.addEventListener("click", function () {
           <p class='user-name'>${activeUsers[i].name}</p>
           <p class='user-email'>(${activeUsers[i].email})</p>
           <p class='user-status'>${activeUsers[i].statusMessage}</p>
-          <p class='user-status'>${activeUsers[i].activity}</p>
           </div>
           </div>
           `;

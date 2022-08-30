@@ -9,7 +9,7 @@
   max-width: 825px;
   display: flex;
   flex-direction: column;
-  padding: 0 32px;
+  gap: 32px;
 }
 
 .single-comment {
@@ -27,11 +27,6 @@
   border-radius: 50%;
   justify-self: center;
 }
-
-/* .name-date-container {
-  display: flex;
-  align-items: center;
-} */
 
 .comment-name {
   font-weight: 600;
@@ -92,22 +87,7 @@
   display: none;
 }
 
-/* @media (max-width: 600px) {
-  .single-comment {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0px;
-    padding: 40px 32px 32px;
-    border-bottom: 4px solid #10b0e7;
-  }
-
-  .comment-content {
-    grid-row: 2;
-    grid-column: 1 / -1;
-  }
-} */
-
-/* Media queries for comment section will be a bit difficult with all the flexboxes. Try to redo the html in js file and start over :D */
+/* MEDIA QUERIES */
 
 @media (max-width: 675px) {
   .comments {
@@ -116,11 +96,12 @@
 
   .comments-box {
     gap: 32px;
+    padding: 0;
   }
 
   .single-comment {
     display: grid;
-    grid-template-columns: 60px 3fr 100px;
+    grid-template-columns: 40px 3fr 90px;
     gap: 8px;
     padding: 40px 8px 24px;
   }

@@ -185,6 +185,11 @@
     height: 12px;
   }
 
+  .user-info {
+    flex-grow: 1;
+    /* justify-self: stretch; */
+  }
+
   .user-name {
     font-size: 16px;
     line-height: 20px;
