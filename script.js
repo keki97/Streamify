@@ -480,20 +480,38 @@ getUsers();
 const commentsContainer = document.querySelector(".comments-container");
 
 let i, commentHTML, curData;
+// const renderComments = function (data) {
+//   for (i = 0; i < 5; i++) {
+//     curData = comments;
+//     commentHTML = `
+//     <div class='single-comment'>
+//     <img src='${comments[i].avatarUrl}' class='comment-img' />
+//     <div>
+//     <div class='name-date-container'>
+//     <p class='comment-name'>${comments[i].name}</p>
+//     <p class='comment-date'>${comments[i].postedAt}</p>
+//       </div>
+//         <p class='comment-email'>${comments[i].email}</p>
+//         <p class='comment-content'>${comments[i].comment}</p>
+//       </div>
+//     </div>
+//     `;
+//     commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
+//   }
+// };
+
 const renderComments = function (data) {
   for (i = 0; i < 5; i++) {
     curData = comments;
     commentHTML = `
     <div class='single-comment'>
-    <img src='${comments[i].avatarUrl}' class='comment-img' />
-    <div>
-    <div class='name-date-container'>
-    <p class='comment-name'>${comments[i].name}</p>
-    <p class='comment-date'>${comments[i].postedAt}</p>
+      <img src='${comments[i].avatarUrl}' class='comment-img' />
+      <div class='name-email-container'>
+        <p class='comment-name'>${comments[i].name}</p>
+        <p class='comment-email'>(${comments[i].email})</p>
       </div>
-        <p class='comment-email'>${comments[i].email}</p>
-        <p class='comment-content'>${comments[i].comment}</p>
-      </div>
+      <p class='comment-date'>${comments[i].postedAt}</p>
+      <p class='comment-content'>${comments[i].comment}</p>
     </div>
     `;
     commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
@@ -521,17 +539,28 @@ showMoreBtn.addEventListener("click", function () {
     for (let j = 0; j < i + 5; j++) {
       commentHTML = `
     <div class='single-comment'>
-    <img src='${curData[j].avatarUrl}' class='comment-img' />
-    <div>
-    <div class='name-date-container'>
-    <p class='comment-name'>${curData[j].name}</p>
-    <p class='comment-date'>${curData[j].postedAt}</p>
+      <img src='${curData[j].avatarUrl}' class='comment-img' />
+      <div class='name-email-container'>
+        <p class='comment-name'>${curData[j].name}</p>
+        <p class='comment-email'>(${curData[j].email})</p>
       </div>
-        <p class='comment-email'>${curData[j].email}</p>
-        <p class='comment-content'>${curData[j].comment}</p>
-      </div>
+      <p class='comment-date'>${curData[j].postedAt}</p>
+      <p class='comment-content'>${curData[j].comment}</p>
     </div>
     `;
+      //   commentHTML = `
+      // <div class='single-comment'>
+      // <img src='${curData[j].avatarUrl}' class='comment-img' />
+      // <div>
+      // <div class='name-date-container'>
+      // <p class='comment-name'>${curData[j].name}</p>
+      // <p class='comment-date'>${curData[j].postedAt}</p>
+      //   </div>
+      //     <p class='comment-email'>${curData[j].email}</p>
+      //     <p class='comment-content'>${curData[j].comment}</p>
+      //   </div>
+      // </div>
+      // `;
       commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
     }
     i = i + 5;

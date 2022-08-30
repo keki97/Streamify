@@ -9,12 +9,13 @@
   max-width: 825px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  padding: 0 32px;
 }
 
 .single-comment {
-  display: flex;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: 1fr 3fr 155px;
+  gap: 12px;
   padding: 40px 32px 32px;
   position: relative;
   border-bottom: 4px solid #10b0e7;
@@ -24,12 +25,13 @@
   height: 88px;
   width: 88px;
   border-radius: 50%;
+  justify-self: center;
 }
 
-.name-date-container {
+/* .name-date-container {
   display: flex;
   align-items: center;
-}
+} */
 
 .comment-name {
   font-weight: 600;
@@ -52,12 +54,14 @@
   line-height: 20px;
   color: #072d49;
   margin-bottom: 32px;
+  grid-column: 2 / -1;
 }
 
 .comment-date {
   font-size: 14px;
   line-height: 17px;
   color: #99a8b4;
+  justify-self: end;
 }
 
 .show-more-comments {
@@ -104,3 +108,59 @@
 } */
 
 /* Media queries for comment section will be a bit difficult with all the flexboxes. Try to redo the html in js file and start over :D */
+
+@media (max-width: 675px) {
+  .comments {
+    padding: 80px 8px;
+  }
+
+  .comments-box {
+    gap: 32px;
+  }
+
+  .single-comment {
+    display: grid;
+    grid-template-columns: 60px 3fr 100px;
+    gap: 8px;
+    padding: 40px 8px 24px;
+  }
+
+  .comment-img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .comment-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .comment-email {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .comment-date {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .comment-content {
+    margin-bottom: 0;
+    grid-column: 1 / -1;
+  }
+
+  .show-more-comments {
+    padding: 12px 32px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .no-more-comments {
+    font-size: 16px;
+    line-height: 20px;
+    color: #657785;
+    align-self: center;
+    display: none;
+  }
+}
