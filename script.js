@@ -121,7 +121,8 @@ pricingArray.forEach((el, i) => {
   <div class='pricing-packets' id='pricing-packet-${i}'>
     <h2 class='pricing-secondary-header'>${el.header}</h2>
     <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
-    <p class='pricing-price'>${price}&#x20AC;</p>
+    <p class='old-price'>${el.oldPrice}</p>
+    <div><p class='pricing-price'>${price}</p><span class='euro-sign'>&#x20AC;</span></div>
     <p class='pricing-price-description'>${el.priceDescription}</p>
     <p class='account-number'>${el.accountNum}</p>
     <button id='${i}' class='pricing-btn'>${el.button}</button>
@@ -188,77 +189,93 @@ pricingToggle.addEventListener("click", function (e) {
   monthly.classList.toggle("bold");
   yearly.classList.toggle("bold");
 
-  pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
+  // pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
 
-  if (pricingToggle.classList.contains("grey-medium")) {
-    pricingArray.forEach((el, i) => {
-      price = el.price;
+  // if (pricingToggle.classList.contains("grey-medium")) {
+  //   pricingArray.forEach((el, i) => {
+  //     price = el.price;
+  //     html = `
+  //     <div class='pricing-packets'>
+  //       <h2 class='pricing-secondary-header'>${el.header}</h2>
+  //       <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
+  //       <p class='pricing-price'>${price}&#x20AC;</p>
+  //       <p class='pricing-price-description'>${el.priceDescription}</p>
+  //       <p class='account-number'>${el.accountNum}</p>
+  //       <button id='${i}' class='pricing-btn'>${el.button}</button>
+  //       <ul>
+  //   `;
+  //     el.list.forEach((item) => {
+  //       html += `
+  //         <li class='pricing-list'>
+  //         <span class="material-symbols-outlined pricing-list-icons">
+  //         done
+  //         </span> ${item}
+  //         </li>
+  //       `;
+  //     });
+  //     html += `
+  //       </ul>
+  //       <p class='pricing-footer'>${el.footer}</p>
+  //       </div>
+  //     `;
+  //     pricingPackets.insertAdjacentHTML("beforeend", html);
+  //   });
+  //   pricingToggle.style.justifyContent = "start";
+  // } else if (pricingToggle.classList.contains("highlight-blue")) {
+  //   pricingArray.forEach((el, i) => {
+  //     price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
+  //     html = `
+  //     <div class='pricing-packets'>
+  //       <h2 class='pricing-secondary-header'>${el.header}</h2>
+  //       <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
+  //       <p class='old-price'>${el.oldPrice}</p>
+  //       <p class='pricing-price'>${price}&#x20AC;</p>
+  //       <p class='pricing-price-description'>${el.priceDescriptionYear}</p>
+  //       <p class='account-number'>${el.accountNum}</p>
+  //       <button id='${i + 3}' class='pricing-btn'>${el.button}</button>
+  //       <ul>
+  //   `;
+  //     el.list.forEach((item) => {
+  //       html += `
+  //         <li class='pricing-list'>
+  //         <span class="material-symbols-outlined pricing-list-icons">
+  //         done
+  //         </span> ${item}
+  //         </li>
+  //       `;
+  //     });
+  //     html += `
+  //       </ul>
+  //       <p class='pricing-footer'>${el.footer}</p>
+  //       </div>
+  //     `;
+  //     pricingPackets.insertAdjacentHTML("beforeend", html);
+  //   });
+  //   pricingToggle.style.justifyContent = "end";
+  // }
 
-      html = `
-      <div class='pricing-packets'>
-        <h2 class='pricing-secondary-header'>${el.header}</h2>
-        <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
-        <p class='pricing-price'>${price}&#x20AC;</p>
-        <p class='pricing-price-description'>${el.priceDescription}</p>
-        <p class='account-number'>${el.accountNum}</p>
-        <button id='${i}' class='pricing-btn'>${el.button}</button>
-        <ul>
-       
-    `;
-      el.list.forEach((item) => {
-        html += `
-          <li class='pricing-list'>
-          <span class="material-symbols-outlined pricing-list-icons">
-          done
-          </span> ${item}
-          </li>
-        `;
-      });
-
-      html += `
-        </ul>
-        <p class='pricing-footer'>${el.footer}</p>
-        </div>
-      `;
-
-      pricingPackets.insertAdjacentHTML("beforeend", html);
+  if (pricingToggle.classList.contains("highlight-blue")) {
+    document.querySelectorAll(".pricing-price").forEach((el) => {
+      console.log(el.innerHTML);
+      el.innerHTML = (el.innerHTML * 12 - el.innerHTML * 12 * 0.2).toFixed(2);
     });
-    pricingToggle.style.justifyContent = "start";
-  } else if (pricingToggle.classList.contains("highlight-blue")) {
-    pricingArray.forEach((el, i) => {
-      price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
+    document
+      .querySelectorAll(".old-price")
+      .forEach((el) => (el.style.display = "block"));
 
-      html = `
-      <div class='pricing-packets'>
-        <h2 class='pricing-secondary-header'>${el.header}</h2>
-        <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
-        <p class='old-price'>${el.oldPrice}</p>
-        <p class='pricing-price'>${price}&#x20AC;</p>
-        <p class='pricing-price-description'>${el.priceDescriptionYear}</p>
-        <p class='account-number'>${el.accountNum}</p>
-        <button id='${i + 3}' class='pricing-btn'>${el.button}</button>
-        <ul>
-       
-    `;
-      el.list.forEach((item) => {
-        html += `
-          <li class='pricing-list'>
-          <span class="material-symbols-outlined pricing-list-icons">
-          done
-          </span> ${item}
-          </li>
-        `;
-      });
-
-      html += `
-        </ul>
-        <p class='pricing-footer'>${el.footer}</p>
-        </div>
-      `;
-
-      pricingPackets.insertAdjacentHTML("beforeend", html);
+    // Change month to year. Change it in the object first
+  } else if (pricingToggle.classList.contains("grey-medium")) {
+    document.querySelectorAll(".pricing-price").forEach((el) => {
+      console.log(el.innerHTML);
+      // el.innerHTML = (el.innerHTML + el.innerHTML * 0.25) / 12;
+      el.innerHTML = (
+        (parseInt(el.innerHTML) + parseInt(el.innerHTML) * 0.25) /
+        12
+      ).toFixed(2);
     });
-    pricingToggle.style.justifyContent = "end";
+    document
+      .querySelectorAll(".old-price")
+      .forEach((el) => (el.style.display = "none"));
   }
 });
 
