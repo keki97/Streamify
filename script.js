@@ -154,16 +154,25 @@ circleContainer.insertAdjacentHTML("beforeend", circle);
 
 // SLIDER
 
-const goToSlide = function (slide) {
-  document.querySelectorAll(".pricing-packets").forEach((s, i) => {
-    s.style.transform = `translateX(${100 * (i - slide)}%)`;
-  });
-};
+window.addEventListener("load", (event) => {
+  document.querySelector('[data-id="1"]').classList.add("active");
+});
+
+const sliderCircle = document.querySelectorAll(".slider-circle");
 
 circleContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("slider-circle")) {
-    const slide = e.target.getAttribute("data-id");
-    goToSlide(slide);
+    const id = e.target.getAttribute("data-id");
+    document.querySelectorAll(".pricing-packets").forEach((el) => {
+      el.style.display = "none";
+    });
+    document.getElementById(`pricing-packet-${id}`).style.display = "block";
+
+    sliderCircle.forEach((el) => {
+      el.classList.remove("active");
+    });
+
+    e.target.classList.add("active");
   }
 });
 

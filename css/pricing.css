@@ -263,23 +263,21 @@
     display: flex;
   }
 
-  /* .pricing-packets-container {
-    gap: 0;
-    overflow: hidden;
+  .pricing-packets-container {
+    height: 660px;
+    position: relative;
+  }
+
+  .pricing-packets {
+    position: absolute;
+    /* display: none; */
   }
 
   #pricing-packet-0 {
-    transform: translateX(-350%);
-    position: relative;
-    left: 336px;
+    display: none;
   }
-  #pricing-packet-1 {
-    transform: translateX(0%);
-    z-index: 1;
-  }
+
   #pricing-packet-2 {
-    transform: translateX(350%);
-    position: relative;
-    left: -336px;
-  } */
+    display: none;
+  }
 }
