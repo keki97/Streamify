@@ -59,8 +59,8 @@ const pricingArray = [
     secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 4.99,
     oldPrice: 4.99 * 12,
-    priceDescription: "/month after <br /> offer period",
-    priceDescriptionYear: "/year after <br /> offer period",
+    priceDescription: "month",
+    priceDescriptionYear: "year",
     accountNum: "1 account",
     button: "choose now",
     list: ["Stream any content", "Unlimited streams"],
@@ -73,8 +73,8 @@ const pricingArray = [
     secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 9.99,
     oldPrice: 9.99 * 12,
-    priceDescription: "/month after <br /> offer period",
-    priceDescriptionYear: "/year after <br /> offer period",
+    priceDescription: "month",
+    priceDescriptionYear: "year",
     accountNum: "Up to 7 accounts",
     button: "choose now",
     list: [
@@ -92,8 +92,8 @@ const pricingArray = [
     secondaryHeader: "1 month <span class='tertiary-header-span'>free</span>",
     price: 6.99,
     oldPrice: 6.99 * 12,
-    priceDescription: "/month after <br /> offer period",
-    priceDescriptionYear: "/year after <br /> offer period",
+    priceDescription: "month",
+    priceDescriptionYear: "year",
     accountNum: "2 accounts",
     button: "choose now",
     list: [
@@ -123,7 +123,7 @@ pricingArray.forEach((el, i) => {
     <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
     <p class='old-price'>${el.oldPrice}</p>
     <div><p class='pricing-price'>${price}</p><span class='euro-sign'>&#x20AC;</span></div>
-    <p class='pricing-price-description'>${el.priceDescription}</p>
+    <p class='pricing-price-description'>/${el.priceDescription} after <br /> offer period</p>
     <p class='account-number'>${el.accountNum}</p>
     <button id='${i}' class='pricing-btn'>${el.button}</button>
     <ul>
@@ -269,7 +269,7 @@ pricingToggle.addEventListener("click", function (e) {
       .forEach((el) => (el.style.display = "block"));
     pricingToggle.style.justifyContent = "end";
     document.querySelectorAll(".pricing-price-description").forEach((el, i) => {
-      el.innerHTML = `${pricingArray[i].priceDescriptionYear}`;
+      el.innerHTML = `/${pricingArray[i].priceDescriptionYear} after <br /> offer period`;
     });
 
     // Change month to year. Change it in the object first
@@ -287,11 +287,11 @@ pricingToggle.addEventListener("click", function (e) {
       .forEach((el) => (el.style.display = "none"));
     pricingToggle.style.justifyContent = "start";
     document.querySelectorAll(".pricing-price-description").forEach((el, i) => {
-      el.innerHTML = `${pricingArray[i].priceDescription}`;
+      el.innerHTML = `/${pricingArray[i].priceDescription} after <br /> offer period`;
     });
   }
 });
-
+// console.log(pricingArray[0].priceDescriptionYear);
 // CHOOSE NOW BUTTON
 ////////////////////////
 // CONNECTING PRICING AND FORM SECTIONS
@@ -301,6 +301,11 @@ const packetPrice = document.querySelector(".packet-price");
 const subtotalPrice = document.querySelector(".subtotal");
 const discount = document.querySelector(".discount");
 const totalPrice = document.querySelector(".total");
+const pricingPacketOption = document.querySelector(".pricing-packet-option");
+const pricingPacketPaymentPeriod = document.querySelector(
+  ".pricing-packet-payment-period"
+);
+const pricingButton = document.querySelector(".pricing-btn");
 
 pricingPackets.addEventListener("click", function (e) {
   e.preventDefault();
@@ -309,47 +314,74 @@ pricingPackets.addEventListener("click", function (e) {
     smoothScrolling();
   }
   price = "";
-  if (e.target.getAttribute("id") === "0") {
+  if (
+    e.target.getAttribute("id") === "0" &&
+    pricingToggle.classList.contains("grey-medium")
+  ) {
     price = pricingArray[0].price;
     packetPrice.innerHTML = price + "&#x20AC;";
     subtotalPrice.innerHTML = price + "&#x20AC;";
     totalPrice.innerHTML = price + "&#x20AC;";
-  }
-  if (e.target.getAttribute("id") === "1") {
-    price = pricingArray[1].price;
-    packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
-  }
-  if (e.target.getAttribute("id") === "2") {
-    price = pricingArray[2].price;
-    packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
-  }
-  if (e.target.getAttribute("id") === "3") {
+    pricingPacketOption.innerHTML = pricingArray[0].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[0].priceDescription}ly`;
+  } else if (
+    e.target.getAttribute("id") === "0" &&
+    pricingToggle.classList.contains("highlight-blue")
+  ) {
     price = (pricingArray[0].oldPrice - pricingArray[0].oldPrice * 0.2).toFixed(
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
     subtotalPrice.innerHTML = price + "&#x20AC;";
     totalPrice.innerHTML = price + "&#x20AC;";
+    pricingPacketOption.innerHTML = pricingArray[0].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[0].priceDescriptionYear}ly`;
   }
-  if (e.target.getAttribute("id") === "4") {
+  if (
+    e.target.getAttribute("id") === "1" &&
+    pricingToggle.classList.contains("grey-medium")
+  ) {
+    price = pricingArray[1].price;
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+    pricingPacketOption.innerHTML = pricingArray[1].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[1].priceDescription}ly`;
+  } else if (
+    e.target.getAttribute("id") === "1" &&
+    pricingToggle.classList.contains("highlight-blue")
+  ) {
     price = (pricingArray[1].oldPrice - pricingArray[1].oldPrice * 0.2).toFixed(
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
     subtotalPrice.innerHTML = price + "&#x20AC;";
     totalPrice.innerHTML = price + "&#x20AC;";
+    pricingPacketOption.innerHTML = pricingArray[1].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[1].priceDescriptionYear}ly`;
   }
-  if (e.target.getAttribute("id") === "5") {
+  if (
+    e.target.getAttribute("id") === "2" &&
+    pricingToggle.classList.contains("grey-medium")
+  ) {
+    price = pricingArray[2].price;
+    packetPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price + "&#x20AC;";
+    totalPrice.innerHTML = price + "&#x20AC;";
+    pricingPacketOption.innerHTML = pricingArray[2].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[2].priceDescription}ly`;
+  } else if (
+    e.target.getAttribute("id") === "2" &&
+    pricingToggle.classList.contains("highlight-blue")
+  ) {
     price = (pricingArray[2].oldPrice - pricingArray[2].oldPrice * 0.2).toFixed(
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
     subtotalPrice.innerHTML = price + "&#x20AC;";
     totalPrice.innerHTML = price + "&#x20AC;";
+    pricingPacketOption.innerHTML = pricingArray[2].header;
+    pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[2].priceDescriptionYear}ly`;
   }
 });
 

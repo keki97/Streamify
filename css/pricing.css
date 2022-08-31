@@ -270,6 +270,10 @@
   background: #10b0e7;
 }
 
+.pricing-packet-payment-period {
+  text-transform: capitalize;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1057px) {
