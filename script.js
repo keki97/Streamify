@@ -23,6 +23,21 @@ headerBtn.addEventListener("click", function () {
   smoothScrolling();
 });
 
+let couponCode;
+
+const renderCoupon = async function (email) {
+  const body = { email, couponType: 1, couponSubtype: 1, value: 50 };
+  const res = await fetch("https://ossam.info/darkog/public/api/v1/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  const data = await res.json();
+  couponCode = data.data.code;
+};
+
 getDiscountBtn.addEventListener("click", function () {
   const modalEmailInput = document.querySelector("#modal-email").value;
   if (!isEmail(modalEmailInput)) {
@@ -33,6 +48,7 @@ getDiscountBtn.addEventListener("click", function () {
     document.querySelector(".modal-email-error").style.opacity = "0";
     headerModal.style.display = "none";
     successModal.style.display = "block";
+    renderCoupon(modalEmailInput);
   }
 });
 
