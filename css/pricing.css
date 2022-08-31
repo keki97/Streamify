@@ -175,6 +175,11 @@
   margin-bottom: 32px;
 }
 
+.pricing-btn-container {
+  width: 100%;
+  text-align: center;
+}
+
 .pricing-btn {
   width: 264px;
   font-weight: 600;
@@ -187,9 +192,9 @@
   color: #f9f9f9;
   border: 2px solid #10b0e7;
   filter: drop-shadow(0px 4px 8px rgba(101, 119, 133, 0.24));
-  margin-bottom: 44px;
   cursor: pointer;
   transition: all 0.3s;
+  margin-bottom: 44px;
 }
 
 .pricing-btn:hover {
@@ -352,12 +357,12 @@
 
   .yearly::after {
     content: "Save 20%";
-    max-width: 60px;
+    max-width: 40px;
     text-align: center;
     font-size: 12px;
     line-height: 12px;
-    padding: 6px 10px;
-    margin-left: 16px;
+    padding: 3px 5px;
+    margin-left: 4px;
     margin-top: 0;
     position: absolute;
   }

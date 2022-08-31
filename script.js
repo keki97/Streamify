@@ -125,7 +125,7 @@ pricingArray.forEach((el, i) => {
     <div class='pricing-price-container'><p class='pricing-price'>${price}</p><span class='euro-sign'>&#x20AC;</span></div>
     <p class='pricing-price-description'>/${el.priceDescription} after <br /> offer period</p>
     <p class='account-number'>${el.accountNum}</p>
-    <button id='${i}' class='pricing-btn'>${el.button}</button>
+    <div class='pricing-btn-container'><button id='${i}' class='pricing-btn'>${el.button}</button></div>
     <ul>
    
 `;
