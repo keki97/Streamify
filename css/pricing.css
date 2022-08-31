@@ -172,7 +172,7 @@
 }
 
 .pricing-btn {
-  width: 100%;
+  width: 264px;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
@@ -298,7 +298,7 @@
 
 @media (max-width: 650px) {
   .pricing {
-    padding: 64px 0;
+    padding: 64px 24px;
   }
 
   .pricing-header {
@@ -361,6 +361,10 @@
 
   .pricing-packets {
     max-width: 336px;
-    padding: 0 24px;
+    padding: 0 12px;
+  }
+
+  .pricing-btn {
+    width: 90%;
   }
 }

@@ -183,12 +183,9 @@ const pricingToggle = document.querySelector(".monthly-yearly");
 const monthly = document.querySelector(".monthly");
 const yearly = document.querySelector(".yearly");
 
-pricingToggle.addEventListener("click", function (e) {
-  pricingToggle.classList.toggle("grey-medium");
-  pricingToggle.classList.toggle("highlight-blue");
-  monthly.classList.toggle("bold");
-  yearly.classList.toggle("bold");
+let yearPrice, discountYearPrice;
 
+pricingToggle.addEventListener("click", function (e) {
   // pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
 
   // if (pricingToggle.classList.contains("grey-medium")) {
@@ -254,28 +251,44 @@ pricingToggle.addEventListener("click", function (e) {
   //   pricingToggle.style.justifyContent = "end";
   // }
 
-  if (pricingToggle.classList.contains("highlight-blue")) {
-    document.querySelectorAll(".pricing-price").forEach((el) => {
-      console.log(el.innerHTML);
-      el.innerHTML = (el.innerHTML * 12 - el.innerHTML * 12 * 0.2).toFixed(2);
+  if (pricingToggle.classList.contains("grey-medium")) {
+    document.querySelectorAll(".pricing-price").forEach((el, i) => {
+      // console.log(el.innerHTML);
+      yearPrice = pricingArray[i].oldPrice;
+      // console.log(yearPrice);
+      discountYearPrice = (yearPrice - yearPrice * 0.2).toFixed(2);
+      el.innerHTML = discountYearPrice;
+      // console.log(discountYearPrice);
     });
+    pricingToggle.classList.toggle("grey-medium");
+    pricingToggle.classList.toggle("highlight-blue");
+    monthly.classList.toggle("bold");
+    yearly.classList.toggle("bold");
     document
       .querySelectorAll(".old-price")
       .forEach((el) => (el.style.display = "block"));
+    pricingToggle.style.justifyContent = "end";
+    document.querySelectorAll(".pricing-price-description").forEach((el, i) => {
+      el.innerHTML = `${pricingArray[i].priceDescriptionYear}`;
+    });
 
     // Change month to year. Change it in the object first
-  } else if (pricingToggle.classList.contains("grey-medium")) {
-    document.querySelectorAll(".pricing-price").forEach((el) => {
-      console.log(el.innerHTML);
-      // el.innerHTML = (el.innerHTML + el.innerHTML * 0.25) / 12;
-      el.innerHTML = (
-        (parseInt(el.innerHTML) + parseInt(el.innerHTML) * 0.25) /
-        12
-      ).toFixed(2);
+  } else if (pricingToggle.classList.contains("highlight-blue")) {
+    document.querySelectorAll(".pricing-price").forEach((el, i) => {
+      const monthPrice = pricingArray[i].price;
+      el.innerHTML = monthPrice;
     });
+    pricingToggle.classList.toggle("grey-medium");
+    pricingToggle.classList.toggle("highlight-blue");
+    monthly.classList.toggle("bold");
+    yearly.classList.toggle("bold");
     document
       .querySelectorAll(".old-price")
       .forEach((el) => (el.style.display = "none"));
+    pricingToggle.style.justifyContent = "start";
+    document.querySelectorAll(".pricing-price-description").forEach((el, i) => {
+      el.innerHTML = `${pricingArray[i].priceDescription}`;
+    });
   }
 });
 
