@@ -122,7 +122,7 @@ pricingArray.forEach((el, i) => {
     <h2 class='pricing-secondary-header'>${el.header}</h2>
     <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
     <p class='old-price'>${el.oldPrice}</p>
-    <div><p class='pricing-price'>${price}</p><span class='euro-sign'>&#x20AC;</span></div>
+    <div class='pricing-price-container'><p class='pricing-price'>${price}</p><span class='euro-sign'>&#x20AC;</span></div>
     <p class='pricing-price-description'>/${el.priceDescription} after <br /> offer period</p>
     <p class='account-number'>${el.accountNum}</p>
     <button id='${i}' class='pricing-btn'>${el.button}</button>
@@ -168,6 +168,7 @@ circleContainer.addEventListener("click", function (e) {
       el.style.display = "none";
     });
     document.getElementById(`pricing-packet-${id}`).style.display = "block";
+    document.querySelector(".pricing-price").style.textAlign = "center";
 
     sliderCircle.forEach((el) => {
       el.classList.remove("active");

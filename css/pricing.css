@@ -113,6 +113,10 @@
   color: #10b0e7;
 }
 
+.pricing-price-container {
+  text-align: center;
+}
+
 .pricing-price {
   font-weight: 600;
   font-size: 36px;
@@ -297,6 +301,11 @@
 
   #pricing-packet-2 {
     display: none;
+  }
+
+  .old-price {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
