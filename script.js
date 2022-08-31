@@ -676,3 +676,16 @@ widgetButton.addEventListener("click", function () {
     }
   });
 });
+
+// SCROLL TO TOP
+
+const topScroll = document.querySelector(".back-to-top-btn");
+
+topScroll.addEventListener("click", function () {
+  const topPageCoords = header.getBoundingClientRect();
+  window.scrollTo({
+    left: topPageCoords.left + window.pageXOffset,
+    top: topPageCoords.top + window.pageYOffset,
+    behavior: "smooth",
+  });
+});

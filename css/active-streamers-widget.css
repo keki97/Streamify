@@ -1,3 +1,19 @@
+.back-to-top-btn {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #10b0e7;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.24);
+  border-radius: 50%;
+  position: fixed;
+  bottom: 160px;
+  right: 115px;
+  cursor: pointer;
+}
+
 .widget-btn {
   width: 96px;
   height: 96px;
@@ -9,7 +25,7 @@
   gap: 8px;
   background: #10b0e7;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.24);
-  border-radius: 104px;
+  border-radius: 50%;
   position: fixed;
   bottom: 40px;
   right: 96px;
@@ -105,9 +121,43 @@
     gap: 48px;
     overflow-y: scroll;
   }
+
+  .widget-btn {
+    bottom: 24px;
+    right: 24px;
+  }
+
+  .back-to-top-btn {
+    bottom: 136px;
+    right: 41px;
+  }
 }
 
 @media (max-width: 620px) {
+  .widget-btn {
+    width: 56px;
+    height: 56px;
+    bottom: 24px;
+    right: 16px;
+  }
+
+  .widget-btn img {
+    width: 29px;
+    height: 25px;
+  }
+
+  .back-to-top-btn {
+    width: 24px;
+    height: 24px;
+    bottom: 90px;
+    right: 33px;
+  }
+
+  .back-to-top-btn img {
+    width: 16px;
+    height: 16px;
+  }
+
   .widget {
     display: grid;
     grid-template-columns: 1fr;
