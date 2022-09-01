@@ -45,10 +45,10 @@ let couponCode, emailCode;
 // };
 
 // Checking if local storage is empty. If empty return, if not do not show modal
+if (localStorage.length > 0) {
+  headerModal.style.display = "none";
+}
 
-// if (localStorage) {
-//   headerModal.style.display = "none";
-// }
 let couponBody;
 // const renderCoupon = async function (email) {
 //   const body = {
@@ -630,7 +630,7 @@ const getUsers = async function () {
   renderUsers();
 };
 renderUsers();
-getUsers();
+// getUsers();
 
 // COMMENTS
 
