@@ -563,14 +563,26 @@ form.addEventListener("click", function (e) {
       dateEl.classList.remove("error");
     }
 
-    // if (couponInput.length !== 6) {
-    //   errorMessageCoupon.style.opacity = "1";
-    //   couponEl.classList.add("error");
-    // } else {
-    //   errorMessageCoupon.style.opacity = "0";
-
-    //   couponEl.classList.remove("error");
-    // }
+    if (
+      errorMessageName.style.opacity === "0" &&
+      errorMessageAddress.style.opacity === "0" &&
+      errorMessageEmail.style.opacity === "0" &&
+      errorMessageCardNum.style.opacity === "0" &&
+      errorMessageCVC.style.opacity === "0" &&
+      errorMessageDate.style.opacity === "0"
+    ) {
+      console.log(`
+      Name: ${nameEl.value}
+      Address: ${addressEl.value}
+      Email: ${emailEl.value}
+      Card number: ${cardNumEl.value}
+      CVC: ${cvcEl.value}
+      Exp. date: ${dateEl.value}
+      Packet: ${pricingPacketOption.innerHTML} ${pricingPacketPaymentPeriod.innerHTML} Membership plan
+      Discount: ${discount.innerHTML}&#x20AC;
+      Total price: ${totalPrice.innerHTML}&#x20AC;
+      `);
+    }
   }
 });
 
@@ -599,6 +611,8 @@ const validateCoupon = async function (email, code) {
   } else {
     errorMessageCoupon.style.opacity = "1";
     couponEl.classList.add("error");
+    errorMessageEmail.style.opacity = "0";
+    emailEl.classList.remove("error");
   }
 };
 
