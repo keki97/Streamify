@@ -49,10 +49,10 @@ let couponCode, emailCode;
 // if (localStorage) {
 //   headerModal.style.display = "none";
 // }
-
-// const renderCoupon = async function (creator_email) {
+let couponBody;
+// const renderCoupon = async function (email) {
 //   const body = {
-//     creator_email,
+//     email,
 //     type_id: 1,
 //     subtype_id: 1,
 //     status_id: 1,
@@ -72,8 +72,6 @@ let couponCode, emailCode;
 //   // couponEl.innerHTML = data.code;
 //   // emailEl.innerHTML = data.email;
 // };
-
-let couponBody;
 
 const renderCoupon = async function (email) {
   couponBody = { email, couponType: 1, couponSubtype: 1, value: 50 };
@@ -261,71 +259,6 @@ let yearPrice, discountYearPrice;
 let discountPercentage = 0;
 
 pricingToggle.addEventListener("click", function (e) {
-  // pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
-
-  // if (pricingToggle.classList.contains("grey-medium")) {
-  //   pricingArray.forEach((el, i) => {
-  //     price = el.price;
-  //     html = `
-  //     <div class='pricing-packets'>
-  //       <h2 class='pricing-secondary-header'>${el.header}</h2>
-  //       <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
-  //       <p class='pricing-price'>${price}&#x20AC;</p>
-  //       <p class='pricing-price-description'>${el.priceDescription}</p>
-  //       <p class='account-number'>${el.accountNum}</p>
-  //       <button id='${i}' class='pricing-btn'>${el.button}</button>
-  //       <ul>
-  //   `;
-  //     el.list.forEach((item) => {
-  //       html += `
-  //         <li class='pricing-list'>
-  //         <span class="material-symbols-outlined pricing-list-icons">
-  //         done
-  //         </span> ${item}
-  //         </li>
-  //       `;
-  //     });
-  //     html += `
-  //       </ul>
-  //       <p class='pricing-footer'>${el.footer}</p>
-  //       </div>
-  //     `;
-  //     pricingPackets.insertAdjacentHTML("beforeend", html);
-  //   });
-  //   pricingToggle.style.justifyContent = "start";
-  // } else if (pricingToggle.classList.contains("highlight-blue")) {
-  //   pricingArray.forEach((el, i) => {
-  //     price = (el.oldPrice - el.oldPrice * 0.2).toFixed(2);
-  //     html = `
-  //     <div class='pricing-packets'>
-  //       <h2 class='pricing-secondary-header'>${el.header}</h2>
-  //       <h3 class='pricing-tertiary-header'>${el.secondaryHeader}</h3>
-  //       <p class='old-price'>${el.oldPrice}</p>
-  //       <p class='pricing-price'>${price}&#x20AC;</p>
-  //       <p class='pricing-price-description'>${el.priceDescriptionYear}</p>
-  //       <p class='account-number'>${el.accountNum}</p>
-  //       <button id='${i + 3}' class='pricing-btn'>${el.button}</button>
-  //       <ul>
-  //   `;
-  //     el.list.forEach((item) => {
-  //       html += `
-  //         <li class='pricing-list'>
-  //         <span class="material-symbols-outlined pricing-list-icons">
-  //         done
-  //         </span> ${item}
-  //         </li>
-  //       `;
-  //     });
-  //     html += `
-  //       </ul>
-  //       <p class='pricing-footer'>${el.footer}</p>
-  //       </div>
-  //     `;
-  //     pricingPackets.insertAdjacentHTML("beforeend", html);
-  //   });
-  //   pricingToggle.style.justifyContent = "end";
-  // }
-
   if (pricingToggle.classList.contains("grey-medium")) {
     document.querySelectorAll(".pricing-price").forEach((el, i) => {
       // console.log(el.innerHTML);
@@ -616,6 +549,31 @@ const validateCoupon = async function (email, code) {
   }
 };
 
+// const validateCoupon = async function (email, code) {
+//   const body = { email, code };
+//   const res = await fetch("https://ossam.info/ivani/public/api/coupon", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//     redirect: "follow",
+//   });
+//   couponValidation = await res.json();
+//   console.log(couponValidation);
+//   if (couponValidation.status) {
+//     discount.innerHTML = (subtotalPrice.innerHTML * discountPercentage).toFixed(
+//       2
+//     );
+//     totalPrice.innerHTML = subtotalPrice.innerHTML - discount.innerHTML;
+//   } else {
+//     errorMessageCoupon.style.opacity = "1";
+//     couponEl.classList.add("error");
+//     errorMessageEmail.style.opacity = "0";
+//     emailEl.classList.remove("error");
+//   }
+// };
+
 applyCoupon.addEventListener("click", function () {
   validateCoupon(emailEl.value, couponEl.value);
   discountPercentage = couponBody.value / 100;
@@ -747,19 +705,7 @@ showMoreBtn.addEventListener("click", function () {
       <p class='comment-content'>${curData[j].comment}</p>
     </div>
     `;
-      //   commentHTML = `
-      // <div class='single-comment'>
-      // <img src='${curData[j].avatarUrl}' class='comment-img' />
-      // <div>
-      // <div class='name-date-container'>
-      // <p class='comment-name'>${curData[j].name}</p>
-      // <p class='comment-date'>${curData[j].postedAt}</p>
-      //   </div>
-      //     <p class='comment-email'>${curData[j].email}</p>
-      //     <p class='comment-content'>${curData[j].comment}</p>
-      //   </div>
-      // </div>
-      // `;
+
       commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
     }
     i = i + 5;
@@ -781,21 +727,6 @@ widgetButton.addEventListener("click", function () {
   overlay.style.display = "block";
   document.body.style.overflow = "hidden";
   widgetModalContainer.style.display = "block";
-  // users.forEach((el, i) => {
-  //   const activeUsersFirst = `
-  //   <div class='user-container'>
-  //       <div class='img-status-container'>
-  //       <img src='${users[i].avatarUrl}' alt='User number ${i}' class='active-user-img'/>
-  //       <div class='active-status-btn'></div>
-  //       </div>
-  //       <div class='user-info'>
-  //       <p class='user-name'>${users[i].name}</p>
-  //       <p class='user-email'>(${users[i].email})</p>
-  //       <p class='user-status'>${users[i].statusMessage}</p>
-  //       <p class='user-status'>${users[i].activity}</p>
-  //       </div>
-  //       </div>
-  //       `;
 
   activeUsers.forEach((el, i) => {
     const activeUsersFirst = `
