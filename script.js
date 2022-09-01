@@ -591,12 +591,7 @@ const validateCoupon = async function (email, code) {
   });
   couponValidation = await res.json();
   console.log(couponValidation);
-};
-
-applyCoupon.addEventListener("click", function () {
-  validateCoupon(emailEl.value, couponEl.value);
-  discountPercentage = couponBody.value / 100;
-  if (1) {
+  if (couponValidation.status) {
     discount.innerHTML = (subtotalPrice.innerHTML * discountPercentage).toFixed(
       2
     );
@@ -605,6 +600,11 @@ applyCoupon.addEventListener("click", function () {
     errorMessageCoupon.style.opacity = "1";
     couponEl.classList.add("error");
   }
+};
+
+applyCoupon.addEventListener("click", function () {
+  validateCoupon(emailEl.value, couponEl.value);
+  discountPercentage = couponBody.value / 100;
 });
 
 // STREAMERS

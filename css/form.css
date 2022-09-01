@@ -55,7 +55,7 @@
 .input-fields-secondary {
   font-family: "Montserrat", sans-serif;
   width: 100%;
-  display: fautocheckboxlex;
+  /* display: fautocheckboxlex; */
   justify-content: space-between;
   align-items: center;
   padding: 16px;
