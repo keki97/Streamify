@@ -238,6 +238,7 @@
             <label for="coupon" class="secondary-blue"
               >Do you have a coupon code?</label
             >
+            <div class="input-coupon-container">
             <input
               type="text"
               id="coupon"
@@ -245,6 +246,8 @@
               placeholder="Coupon code"
               class="input-fields-secondary"
             />
+            <p class="apply-coupon">Apply</p>
+          </div>
             <p class="error-message coupon-error">Please enter a valid coupon code!</p>
           </div>
           <div class="horizontal-line"></div>
@@ -260,16 +263,16 @@
           <div class="horizontal-line"></div>
           <div class="packet-container">
             <p class="dark-grey bold">Subtotal</p>
-            <p class="dark-grey bold subtotal">9.99&#x20AC;</p>
+            <p class="dark-grey bold "><span class="subtotal">9.99</span>&#x20AC;</p>
           </div>
           <div class="packet-container">
             <p class="dark-grey bold">Discount</p>
-            <p class="dark-grey bold discount">-</p>
+            <p class="dark-grey bold discount-container"><span class="discount">0.00</span>&#x20AC;</p>
           </div>
           <div class="horizontal-line-dark"></div>
           <div class="packet-container">
             <p class="font-lg secondary-blue">Total</p>
-            <p class="font-lg total secondary-blue">5&#x20AC;</p>
+            <p class="font-lg secondary-blue"><span class="total">9.99</span>&#x20AC;</p>
           </div>
         </div>
         <button class="payment-btn">Proceed With Payment</button>

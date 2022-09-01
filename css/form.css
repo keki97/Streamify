@@ -149,6 +149,21 @@
   height: 18px;
 }
 
+.input-coupon-container {
+  position: relative;
+}
+
+.apply-coupon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+}
+
 .error-message {
   font-size: 14px;
   line-height: 17px;
@@ -265,6 +280,17 @@
     top: 35px;
     left: 12px;
     color: #657785;
+  }
+
+  .apply-coupon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 

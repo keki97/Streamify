@@ -23,19 +23,75 @@ headerBtn.addEventListener("click", function () {
   smoothScrolling();
 });
 
-let couponCode;
+let couponCode, emailCode;
+
+// const renderCoupon = async function (email) {
+//   const body = { email, type_id: 1, subtype_id: 1, value: 50 };
+//   const res = await fetch("https://ossam.info/milosk/public/api/coupon/store", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//   });
+//   const data = await res.json();
+//   console.log(data);
+//   couponCode = data.code;
+//   emailCode = data.email;
+//   localStorage.setItem("email", emailCode);
+//   localStorage.setItem("coupon", couponCode);
+//   couponEl.value = data.code;
+//   emailEl.value = data.email;
+// };
+
+// Checking if local storage is empty. If empty return, if not do not show modal
+
+// if (localStorage) {
+//   headerModal.style.display = "none";
+// }
+
+// const renderCoupon = async function (creator_email) {
+//   const body = {
+//     creator_email,
+//     type_id: 1,
+//     subtype_id: 1,
+//     status_id: 1,
+//     value: 50,
+//   };
+//   const res = await fetch("https://ossam.info/ivani/public/api/coupon/store", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//   });
+//   const data = await res.json();
+//   console.log(data);
+//   // couponCode = data.code;
+//   // emailCode = data.email;
+//   // couponEl.innerHTML = data.code;
+//   // emailEl.innerHTML = data.email;
+// };
+
+let couponBody;
 
 const renderCoupon = async function (email) {
-  const body = { email, couponType: 1, couponSubtype: 1, value: 50 };
+  couponBody = { email, couponType: 1, couponSubtype: 1, value: 50 };
   const res = await fetch("https://ossam.info/darkog/public/api/v1/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(couponBody),
   });
   const data = await res.json();
+  console.log(data);
   couponCode = data.data.code;
+  // emailCode = data.data.email;
+  // localStorage.setItem("email", emailCode);
+  localStorage.setItem("coupon", couponCode);
+  couponEl.value = data.data.code;
+  // emailEl.value = data.email;
 };
 
 getDiscountBtn.addEventListener("click", function () {
@@ -49,6 +105,7 @@ getDiscountBtn.addEventListener("click", function () {
     headerModal.style.display = "none";
     successModal.style.display = "block";
     renderCoupon(modalEmailInput);
+    emailEl.value = modalEmailInput;
   }
 });
 
@@ -201,6 +258,7 @@ const monthly = document.querySelector(".monthly");
 const yearly = document.querySelector(".yearly");
 
 let yearPrice, discountYearPrice;
+let discountPercentage = 0;
 
 pricingToggle.addEventListener("click", function (e) {
   // pricingPackets.innerHTML = `<div class='circle-container'>${circle}</div>`;
@@ -337,8 +395,9 @@ pricingPackets.addEventListener("click", function (e) {
   ) {
     price = pricingArray[0].price;
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[0].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[0].priceDescription}ly`;
   } else if (
@@ -349,8 +408,9 @@ pricingPackets.addEventListener("click", function (e) {
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[0].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[0].priceDescriptionYear}ly`;
   }
@@ -360,8 +420,9 @@ pricingPackets.addEventListener("click", function (e) {
   ) {
     price = pricingArray[1].price;
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[1].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[1].priceDescription}ly`;
   } else if (
@@ -372,8 +433,9 @@ pricingPackets.addEventListener("click", function (e) {
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[1].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[1].priceDescriptionYear}ly`;
   }
@@ -383,8 +445,9 @@ pricingPackets.addEventListener("click", function (e) {
   ) {
     price = pricingArray[2].price;
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[2].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[2].priceDescription}ly`;
   } else if (
@@ -395,8 +458,9 @@ pricingPackets.addEventListener("click", function (e) {
       2
     );
     packetPrice.innerHTML = price + "&#x20AC;";
-    subtotalPrice.innerHTML = price + "&#x20AC;";
-    totalPrice.innerHTML = price + "&#x20AC;";
+    subtotalPrice.innerHTML = price;
+    discount.innerHTML = price * discountPercentage;
+    totalPrice.innerHTML = price * (1 - discountPercentage);
     pricingPacketOption.innerHTML = pricingArray[2].header;
     pricingPacketPaymentPeriod.innerHTML = ` ${pricingArray[2].priceDescriptionYear}ly`;
   }
@@ -499,14 +563,47 @@ form.addEventListener("click", function (e) {
       dateEl.classList.remove("error");
     }
 
-    if (couponInput.length !== 6) {
-      errorMessageCoupon.style.opacity = "1";
-      couponEl.classList.add("error");
-    } else {
-      errorMessageCoupon.style.opacity = "0";
+    // if (couponInput.length !== 6) {
+    //   errorMessageCoupon.style.opacity = "1";
+    //   couponEl.classList.add("error");
+    // } else {
+    //   errorMessageCoupon.style.opacity = "0";
 
-      couponEl.classList.remove("error");
-    }
+    //   couponEl.classList.remove("error");
+    // }
+  }
+});
+
+// APPLY COUPON
+let couponValidation;
+
+const applyCoupon = document.querySelector(".apply-coupon");
+
+const validateCoupon = async function (email, code) {
+  const body = { email, code };
+  const res = await fetch("https://ossam.info/darkog/public/api/v1/use", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    redirect: "follow",
+  });
+  couponValidation = await res.json();
+  console.log(couponValidation);
+};
+
+applyCoupon.addEventListener("click", function () {
+  validateCoupon(emailEl.value, couponEl.value);
+  discountPercentage = couponBody.value / 100;
+  if (1) {
+    discount.innerHTML = (subtotalPrice.innerHTML * discountPercentage).toFixed(
+      2
+    );
+    totalPrice.innerHTML = subtotalPrice.innerHTML - discount.innerHTML;
+  } else {
+    errorMessageCoupon.style.opacity = "1";
+    couponEl.classList.add("error");
   }
 });
 
