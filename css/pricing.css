@@ -297,7 +297,7 @@
 
   .pricing-packets {
     position: absolute;
-    /* display: none; */
+    /* display: flex; */
   }
 
   #pricing-packet-0 {

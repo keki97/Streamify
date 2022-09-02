@@ -43,6 +43,7 @@
   background-color: #072d49;
   z-index: 1000;
   display: none;
+  border-radius: 8px;
   /* overflow-y: scroll; */
 }
 

@@ -238,7 +238,7 @@ circleContainer.addEventListener("click", function (e) {
     document.querySelectorAll(".pricing-packets").forEach((el) => {
       el.style.display = "none";
     });
-    document.getElementById(`pricing-packet-${id}`).style.display = "block";
+    document.getElementById(`pricing-packet-${id}`).style.display = "flex";
     document.querySelector(".pricing-price").style.textAlign = "center";
 
     sliderCircle.forEach((el) => {
