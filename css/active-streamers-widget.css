@@ -159,6 +159,11 @@
     height: 16px;
   }
 
+  .widget {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   .active-user-img {
     width: 48px;
     height: 48px;

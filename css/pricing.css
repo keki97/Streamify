@@ -387,7 +387,7 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 350px) {
   .pricing-packets {
     max-width: 280px;
     padding: 0 6px;

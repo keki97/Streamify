@@ -699,14 +699,18 @@ showMoreBtn.addEventListener("click", function () {
     commentsContainer.innerHTML = "";
     for (let j = 0; j < i + 5; j++) {
       commentHTML = `
-    <div class='single-comment'>
+      <div class='single-comment'>
       <img src='${curData[j].avatarUrl}' class='comment-img' />
-      <div class='name-email-container'>
-        <p class='comment-name'>${curData[j].name}</p>
-        <p class='comment-email'>(${curData[j].email})</p>
+      <div class='content-container'>
+        <div class='top-container'>
+          <div class='name-email-container'>
+            <p class='comment-name'>${curData[j].name}</p>
+            <p class='comment-email'>(${curData[j].email})</p>
+          </div>
+          <p class='comment-date'>${curData[j].postedAt}</p>
+        </div>
+        <p class='comment-content'>${curData[j].comment}</p>
       </div>
-      <p class='comment-date'>${curData[j].postedAt}</p>
-      <p class='comment-content'>${curData[j].comment}</p>
     </div>
     `;
 
