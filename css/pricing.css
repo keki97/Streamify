@@ -386,3 +386,10 @@
     width: 90%;
   }
 }
+
+@media (max-width: 360px) {
+  .pricing-packets {
+    max-width: 280px;
+    padding: 0 6px;
+  }
+}

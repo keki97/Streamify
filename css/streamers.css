@@ -152,6 +152,10 @@
     border-bottom: none;
   }
 
+  .streamers-container {
+    padding: 24px 8px;
+  }
+
   .streamers {
     grid-template-columns: 1fr;
     gap: 0;
