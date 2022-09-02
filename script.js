@@ -663,12 +663,16 @@ const renderComments = function (data) {
     commentHTML = `
     <div class='single-comment'>
       <img src='${comments[i].avatarUrl}' class='comment-img' />
-      <div class='name-email-container'>
-        <p class='comment-name'>${comments[i].name}</p>
-        <p class='comment-email'>(${comments[i].email})</p>
+      <div class='content-container'>
+        <div class='top-container'>
+          <div class='name-email-container'>
+            <p class='comment-name'>${comments[i].name}</p>
+            <p class='comment-email'>(${comments[i].email})</p>
+          </div>
+          <p class='comment-date'>${comments[i].postedAt}</p>
+        </div>
+        <p class='comment-content'>${comments[i].comment}</p>
       </div>
-      <p class='comment-date'>${comments[i].postedAt}</p>
-      <p class='comment-content'>${comments[i].comment}</p>
     </div>
     `;
     commentsContainer.insertAdjacentHTML("beforeend", commentHTML);
