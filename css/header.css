@@ -61,6 +61,7 @@
 /* COUPON MODAL */
 
 .header-modal {
+  max-width: 818px;
   position: absolute;
   top: 50%;
   left: 50%;
