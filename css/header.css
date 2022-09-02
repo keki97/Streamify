@@ -26,7 +26,7 @@
   font-size: 40px;
   line-height: 49px;
   text-transform: lowercase;
-  color: #072d49;
+  color: #f9f9f9;
   text-align: center;
   margin-bottom: 223px;
 }
@@ -250,6 +250,10 @@
   .header {
     background-size: 1600px 1032px;
     background-position: 15% 5%;
+  }
+
+  .title {
+    color: #072d49;
   }
 }
 

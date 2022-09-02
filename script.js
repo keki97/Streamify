@@ -541,11 +541,17 @@ const validateCoupon = async function (email, code) {
       2
     );
     totalPrice.innerHTML = subtotalPrice.innerHTML - discount.innerHTML;
+
+    errorMessageCoupon.style.opacity = "1";
+    errorMessageCoupon.style.color = "#15c130";
+    errorMessageCoupon.innerHTML = "Coupon code successfully applied";
+    errorMessageEmail.style.opacity = "0";
+    emailEl.classList.remove("error");
   } else {
     errorMessageCoupon.style.opacity = "1";
     couponEl.classList.add("error");
-    errorMessageEmail.style.opacity = "0";
-    emailEl.classList.remove("error");
+    errorMessageEmail.style.opacity = "1";
+    emailEl.classList.add("error");
   }
 };
 

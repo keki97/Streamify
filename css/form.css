@@ -7,6 +7,7 @@
   gap: 120px;
   padding: 112px 0 84px;
   background-color: #f9f9f9;
+  position: relative;
 }
 
 .cardholder-container {
@@ -15,7 +16,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
-  gap: 16px;
+  gap: 48px;
 }
 
 .credit-card-details-container {
@@ -63,6 +64,10 @@
   border: 1px solid #99a8b4;
   border-radius: 4px;
   font-size: 20px;
+}
+
+.form label {
+  margin-bottom: 4px;
 }
 
 .error {
@@ -168,6 +173,7 @@
   font-size: 14px;
   line-height: 17px;
   color: #f63f34;
+  margin-bottom: 12px;
   /* opacity: 0; */
 }
 
@@ -216,11 +222,59 @@
   color: #657785;
 }
 
+/* FORM MODAL */
+
+.form-modal {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  position: absolute;
+  left: 50%;
+  top: 36px;
+  transform: translateX(-50%);
+  margin-bottom: 32px;
+  padding: 64px 150px 96px;
+  border: 3px solid black;
+}
+
+.form-modal-secondary-header {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 61px;
+  text-align: center;
+  color: #072d49;
+}
+
+.form-modal-img {
+  width: 402px;
+  height: 338px;
+  margin-bottom: 48px;
+}
+
+.form-modal-tertiary-header {
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 41px;
+  text-align: center;
+  color: #10b0e7;
+  margin-bottom: 16px;
+}
+
+.form-modal-paragraph {
+  font-size: 22px;
+  line-height: 32px;
+  text-align: center;
+  color: #657785;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1120px) {
   .details {
     gap: 48px;
+    position: relative;
   }
 }
 
@@ -229,11 +283,23 @@
     flex-direction: column-reverse;
     align-items: center;
     gap: 64px;
-    padding: 72px 16px;
+    padding: 72px 16px 156px;
   }
 
   .form-header {
     font-size: 26px;
+  }
+
+  .payment-btn {
+    position: absolute;
+    bottom: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+  }
+
+  .card-info {
+    width: 100%;
   }
 }
 
@@ -260,6 +326,7 @@
 
   .payment-btn {
     font-size: 16px;
+    width: 400px;
   }
 
   .secondary-blue {
@@ -270,6 +337,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 100%;
   }
 
   .horizontal-line {
@@ -297,5 +365,18 @@
 @media (max-width: 432px) {
   .horizontal-line {
     width: 100%;
+  }
+  .error-message {
+    font-size: 12px;
+  }
+
+  .success-message {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .payment-btn {
+    width: 92%;
   }
 } ;
