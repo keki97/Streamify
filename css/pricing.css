@@ -186,7 +186,7 @@
   font-size: 16px;
   line-height: 20px;
   text-transform: uppercase;
-  background-color: rgba(14, 14, 33, 0.24);
+  background-color: inherit;
   border-radius: 4px;
   padding: 12px 40px;
   color: #f9f9f9;
