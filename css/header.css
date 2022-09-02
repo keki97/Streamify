@@ -246,11 +246,24 @@
 
 /* MEDIA QUERIES */
 
-@media (max-width: 950px) {
+@media (max-width: 1440px) {
   .header {
+    background-size: 1600px 1032px;
+    background-position: 15% 5%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header {
+    background-position: 40% 5%;
+  }
+}
+
+@media (max-width: 950px) {
+  /* .header {
     padding-left: 3%;
   }
-
+*/
   .header-font-lg {
     font-size: 58px !important;
   }
