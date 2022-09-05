@@ -102,4 +102,8 @@ input[type="number"] {
   .font-lg {
     font-size: 20px !important;
   }
+
+  .margin-btm-lg {
+    margin-bottom: 32px !important;
+  }
 }
