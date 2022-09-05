@@ -676,9 +676,28 @@ let i, commentHTML, curData;
 //   }
 // };
 
+const monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
 const renderComments = function (data) {
   for (i = 0; i < 5; i++) {
     curData = comments;
+    const formatDate = new Date(`${comments[i].postedAt}`);
+    const formatDay = `${formatDate.getDate()}`.padStart(2, "0");
+    const formatMonth = monthNames[formatDate.getMonth()];
+    const formatYear = formatDate.getFullYear();
     commentHTML = `
     <div class='single-comment'>
       <img src='${comments[i].avatarUrl}' class='comment-img' />
@@ -688,7 +707,7 @@ const renderComments = function (data) {
             <p class='comment-name'>${comments[i].name}</p>
             <p class='comment-email'>(${comments[i].email})</p>
           </div>
-          <p class='comment-date'>${comments[i].postedAt}</p>
+          <p class='comment-date'>${formatMonth} ${formatDay}, ${formatYear}</p>
         </div>
         <p class='comment-content'>${comments[i].comment}</p>
       </div>
@@ -717,6 +736,10 @@ showMoreBtn.addEventListener("click", function () {
   if (i < 100) {
     commentsContainer.innerHTML = "";
     for (let j = 0; j < i + 5; j++) {
+      const formatDate = new Date(`${curData[j].postedAt}`);
+      const formatDay = `${formatDate.getDate()}`.padStart(2, "0");
+      const formatMonth = monthNames[formatDate.getMonth()];
+      const formatYear = formatDate.getFullYear();
       commentHTML = `
       <div class='single-comment'>
       <img src='${curData[j].avatarUrl}' class='comment-img' />
@@ -726,7 +749,7 @@ showMoreBtn.addEventListener("click", function () {
             <p class='comment-name'>${curData[j].name}</p>
             <p class='comment-email'>(${curData[j].email})</p>
           </div>
-          <p class='comment-date'>${curData[j].postedAt}</p>
+          <p class='comment-date'>${formatMonth} ${formatDay}, ${formatYear}</p>
         </div>
         <p class='comment-content'>${curData[j].comment}</p>
       </div>
