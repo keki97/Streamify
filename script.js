@@ -18,6 +18,7 @@ const header = document.querySelector(".header");
 const headerModal = document.querySelector(".header-modal");
 const overlay = document.querySelector(".overlay");
 const successModal = document.querySelector(".header-success-modal");
+const formModal = document.querySelector(".form-modal");
 
 headerBtn.addEventListener("click", function () {
   smoothScrolling();
@@ -46,7 +47,9 @@ let couponCode, emailCode;
 
 // Checking if local storage is empty. If empty return, if not do not show modal
 if (localStorage.length > 0) {
+  overlay.style.display = "none";
   headerModal.style.display = "none";
+  document.body.style.overflow = "auto";
 }
 
 let couponBody;
@@ -119,6 +122,7 @@ document.body.addEventListener("click", function (e) {
     widgetModalContainer.style.display = "none";
     successModal.style.display = "none";
     document.body.style.overflow = "auto";
+    formModal.style.display = "none";
   }
 });
 
@@ -228,6 +232,12 @@ circleContainer.insertAdjacentHTML("beforeend", circle);
 
 window.addEventListener("load", (event) => {
   document.querySelector('[data-id="1"]').classList.add("active");
+  const topPageCoords = header.getBoundingClientRect();
+  window.scrollTo({
+    left: topPageCoords.left + window.pageXOffset,
+    top: topPageCoords.top + window.pageYOffset,
+    behavior: "smooth",
+  });
 });
 
 const sliderCircle = document.querySelectorAll(".slider-circle");
@@ -504,6 +514,7 @@ form.addEventListener("click", function (e) {
       errorMessageCVC.style.opacity === "0" &&
       errorMessageDate.style.opacity === "0"
     ) {
+      formModal.style.display = "block";
       console.log(`
       Name: ${nameEl.value}
       Address: ${addressEl.value}

@@ -102,7 +102,7 @@
 }
 
 .horizontal-line {
-  width: 100%;
+  width: 500px;
   height: 0px;
   border: 1px solid #99a8b4;
 }
@@ -235,7 +235,9 @@
   top: 36px;
   transform: translateX(-50%);
   margin-bottom: 32px;
-  padding: 64px 150px 96px;
+  padding: 112px 150px 96px;
+  border-radius: 8px;
+  z-index: 100;
   display: none;
 }
 
@@ -275,6 +277,13 @@
   .details {
     gap: 48px;
     position: relative;
+  }
+
+  /* FORM MODAL */
+
+  .form-modal {
+    width: 80%;
+    padding: 112px 24px 96px;
   }
 }
 
@@ -360,6 +369,34 @@
     font-size: 16px;
     line-height: 20px;
   }
+
+  /* FORM MODAL */
+
+  .form-modal {
+    padding: 104px 24px 76px;
+  }
+
+  .form-modal-secondary-header {
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .form-modal-img {
+    width: 228px;
+    height: 192px;
+    margin-bottom: 32px;
+  }
+
+  .form-modal-tertiary-header {
+    font-size: 22px;
+    line-height: 27px;
+    margin-bottom: 8px;
+  }
+
+  .form-modal-paragraph {
+    font-size: 14px;
+    line-height: 17px;
+  }
 }
 
 @media (max-width: 432px) {
@@ -378,5 +415,10 @@
 @media (max-width: 400px) {
   .payment-btn {
     width: 92%;
+  }
+
+  .form-modal {
+    width: 95%;
+    padding: 104px 16px 76px;
   }
 } ;
