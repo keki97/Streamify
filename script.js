@@ -514,7 +514,9 @@ form.addEventListener("click", function (e) {
       errorMessageCVC.style.opacity === "0" &&
       errorMessageDate.style.opacity === "0"
     ) {
-      formModal.style.display = "block";
+      formModal.style.display = "flex";
+      overlay.style.display = "block";
+      document.body.style.overflow = "hidden";
       console.log(`
       Name: ${nameEl.value}
       Address: ${addressEl.value}
