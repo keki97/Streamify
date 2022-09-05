@@ -191,7 +191,7 @@
   padding: 12px 40px;
   color: #f9f9f9;
   border: 2px solid #10b0e7;
-  filter: drop-shadow(0px 4px 8px rgba(101, 119, 133, 0.24));
+  /* filter: drop-shadow(0px 4px 8px rgba(101, 119, 133, 0.24)); */
   cursor: pointer;
   transition: all 0.3s;
   margin-bottom: 44px;
@@ -391,5 +391,10 @@
   .pricing-packets {
     max-width: 280px;
     padding: 0 6px;
+  }
+
+  .yearly::after {
+    content: "Save 20%";
+    padding: 6px;
   }
 }

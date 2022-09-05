@@ -170,6 +170,7 @@
       ),
       url("../images/block-img-1.png");
     background-size: 682px 432px;
+    background-position: 75%;
   }
 
   .img-2 {

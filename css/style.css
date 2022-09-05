@@ -10,6 +10,14 @@ body {
   overflow: hidden;
 }
 
+input:-webkit-autofill {
+  -webkit-text-fill-color: #072d49 !important;
+}
+
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+}
+
 .white {
   color: #f9f9f9;
 }
