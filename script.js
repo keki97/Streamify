@@ -601,7 +601,7 @@ applyCoupon.addEventListener("click", function () {
 // STREAMERS
 
 const streamers = document.querySelector(".streamers");
-let users, id;
+let users, id, userNames;
 users = activeUsers;
 
 const renderUsers = function () {
@@ -650,6 +650,28 @@ const getUsers = async function () {
 };
 renderUsers();
 // getUsers();
+
+// FILTER STREAMERS BY NAME
+
+const filterStreamers = function () {
+  const searchInput = document.querySelector(".searchbox");
+  const filter = searchInput.value.toLowerCase();
+  const filterNames = document.querySelectorAll(".user-name");
+
+  filterNames.forEach((name) => {
+    let text = name.textContent;
+    let div = name.parentElement;
+    let container = div.parentElement;
+    // console.log(div);
+    if (text.toLowerCase().includes(filter.toLowerCase())) {
+      container.style.display = "";
+    } else {
+      container.style.display = "none";
+    }
+  });
+};
+// filterStreamers();
+document.querySelector(".searchbox").addEventListener("input", filterStreamers);
 
 // COMMENTS
 
