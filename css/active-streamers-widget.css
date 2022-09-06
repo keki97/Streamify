@@ -90,7 +90,7 @@
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #e76a10;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -100,6 +100,7 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
+  border: 2px solid #e76a10;
   margin-bottom: 16px;
 }
 

@@ -810,32 +810,21 @@ widgetButton.addEventListener("click", function () {
           <div class='user-info'>
           <p class='user-name'>${activeUsers[i].name}</p>
           <p class='user-email'>(${activeUsers[i].email})</p>
-          <p class='user-status'>${activeUsers[i].statusMessage}</p>
+          <p class='user-status'>${activeUsers[i].statusMessage}</p>         
+          <p class='user-activity user-status'>${activeUsers[i].activity}</p>         
           </div>
           </div>
           `;
 
-    el.activity === "online"
-      ? widgetModal.insertAdjacentHTML("afterbegin", activeUsersFirst)
-      : widgetModal.insertAdjacentHTML("beforeend", activeUsersFirst);
-
     if (el.activity === "online") {
+      widgetModal.insertAdjacentHTML("afterbegin", activeUsersFirst);
       document.querySelectorAll(".active-status-btn")[0].style.backgroundColor =
         "#1AD838";
       document.querySelectorAll(".active-user-img")[0].style.border =
         "2px solid #1AD838";
     }
-    if (el.activity === "offline") {
-      document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
-        "#99A8B4";
-      document.querySelectorAll(".active-user-img")[i].style.border =
-        "2px solid #99A8B4";
-    }
     if (el.activity === "streaming") {
-      document.querySelectorAll(".active-status-btn")[i].style.backgroundColor =
-        "#E76A10";
-      document.querySelectorAll(".active-user-img")[i].style.border =
-        "2px solid #E76A10";
+      widgetModal.insertAdjacentHTML("beforeend", activeUsersFirst);
     }
   });
 });
