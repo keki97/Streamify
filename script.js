@@ -676,22 +676,35 @@ const filterStreamers = function () {
     let container = div.parentElement;
     // console.log(div);
     if (text.toLowerCase().includes(filter.toLowerCase())) {
-      container.style.display = "";
+      container.classList.remove("hidden");
     } else {
-      container.style.display = "none";
+      container.classList.add("hidden");
     }
   });
+  for (let index = 0; index < streamerContainer.length; index++) {
+    if (!streamerContainer[index].classList.contains("hidden")) {
+      document.querySelector(".no-results-container").style.display = "none";
+      break;
+    } else {
+      document.querySelector(".no-results-container").style.display = "block";
+    }
+  }
 };
 // filterStreamers();
 document.querySelector(".searchbox").addEventListener("input", filterStreamers);
 
-// if () {
-//   document.querySelector(".no-results-container").style.display = "block";
-// }
+const streamerContainer = document.querySelectorAll(".user-container");
 
-function isHidden(el) {
-  return el.offsetParent === null;
-}
+// for (let index = 0; index < streamerContainer.length; index++) {
+//   if (!streamerContainer[index].classList.contains("hidden")) {
+//     document.querySelector(".no-results-container").style.display = "none";
+//     console.log("Not got it");
+//     break;
+//   } else {
+//     console.log("Got it");
+//     document.querySelector(".no-results-container").style.display = "block";
+//   }
+// }
 
 // COMMENTS
 

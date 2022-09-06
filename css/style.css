@@ -94,6 +94,10 @@ input:-webkit-autofill {
   margin-bottom: 80px !important;
 }
 
+.hidden {
+  display: none !important;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
