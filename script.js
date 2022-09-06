@@ -664,6 +664,7 @@ renderUsers();
 // getUsers();
 
 // FILTER STREAMERS BY NAME
+const streamerContainer = document.querySelectorAll(".user-container");
 
 const filterStreamers = function () {
   const searchInput = document.querySelector(".searchbox");
@@ -690,21 +691,8 @@ const filterStreamers = function () {
     }
   }
 };
-// filterStreamers();
+
 document.querySelector(".searchbox").addEventListener("input", filterStreamers);
-
-const streamerContainer = document.querySelectorAll(".user-container");
-
-// for (let index = 0; index < streamerContainer.length; index++) {
-//   if (!streamerContainer[index].classList.contains("hidden")) {
-//     document.querySelector(".no-results-container").style.display = "none";
-//     console.log("Not got it");
-//     break;
-//   } else {
-//     console.log("Got it");
-//     document.querySelector(".no-results-container").style.display = "block";
-//   }
-// }
 
 // COMMENTS
 
