@@ -107,11 +107,11 @@ getDiscountBtn.addEventListener("click", function () {
     successModal.style.display = "block";
     renderCoupon(modalEmailInput);
     emailEl.value = modalEmailInput;
+    localStorage.setItem("email", modalEmailInput);
   }
 });
 
 document.body.addEventListener("click", function (e) {
-  e.preventDefault();
   if (
     e.target.classList.contains("modal-close") ||
     e.target.classList.contains("overlay") ||
@@ -448,76 +448,76 @@ const isCardNum = function (cardNum) {
   return /^(\d{4}\s)?\(?\d{4}\)?[\s]\d{4}[\s]\d{4}$/.test(cardNum);
 };
 
-form.addEventListener("click", function (e) {
-  if (e.target.classList.contains("payment-btn")) {
-    const nameInput = nameEl.value;
-    const addressInput = addressEl.value;
-    const emailInput = emailEl.value;
-    const cardNumInput = cardNumEl.value;
-    const cvcInput = cvcEl.value;
-    const dateInput = dateEl.value;
-    const couponInput = couponEl.value;
+document.querySelector(".payment-btn").addEventListener("click", function (e) {
+  e.preventDefault();
+  const nameInput = nameEl.value;
+  const addressInput = addressEl.value;
+  const emailInput = emailEl.value;
+  const cardNumInput = cardNumEl.value;
+  const cvcInput = cvcEl.value;
+  const dateInput = dateEl.value;
+  const couponInput = couponEl.value;
 
-    if (!isNameOrAddress(nameInput)) {
-      errorMessageName.style.opacity = "1";
-      nameEl.classList.add("error");
-    } else {
-      errorMessageName.style.opacity = "0";
-      nameEl.classList.remove("error");
-    }
+  if (!isNameOrAddress(nameInput)) {
+    errorMessageName.style.opacity = "1";
+    nameEl.classList.add("error");
+  } else {
+    errorMessageName.style.opacity = "0";
+    nameEl.classList.remove("error");
+  }
 
-    if (!isNameOrAddress(addressInput)) {
-      errorMessageAddress.style.opacity = "1";
-      addressEl.classList.add("error");
-    } else {
-      errorMessageAddress.style.opacity = "0";
-      addressEl.classList.remove("error");
-    }
+  if (!isNameOrAddress(addressInput)) {
+    errorMessageAddress.style.opacity = "1";
+    addressEl.classList.add("error");
+  } else {
+    errorMessageAddress.style.opacity = "0";
+    addressEl.classList.remove("error");
+  }
 
-    if (emailInput.length === 0 || !isEmail(emailInput)) {
-      errorMessageEmail.style.opacity = "1";
-      emailEl.classList.add("error");
-    } else {
-      errorMessageEmail.style.opacity = "0";
-      emailEl.classList.remove("error");
-    }
+  if (emailInput.length === 0 || !isEmail(emailInput)) {
+    errorMessageEmail.style.opacity = "1";
+    emailEl.classList.add("error");
+  } else {
+    errorMessageEmail.style.opacity = "0";
+    emailEl.classList.remove("error");
+  }
 
-    if (!isCardNum(cardNumInput)) {
-      errorMessageCardNum.style.opacity = "1";
-      cardNumEl.classList.add("error");
-    } else {
-      errorMessageCardNum.style.opacity = "0";
-      cardNumEl.classList.remove("error");
-    }
+  if (!isCardNum(cardNumInput)) {
+    errorMessageCardNum.style.opacity = "1";
+    cardNumEl.classList.add("error");
+  } else {
+    errorMessageCardNum.style.opacity = "0";
+    cardNumEl.classList.remove("error");
+  }
 
-    if (cvcInput.length !== 3) {
-      errorMessageCVC.style.opacity = "1";
-      cvcEl.classList.add("error");
-    } else {
-      errorMessageCVC.style.opacity = "0";
-      cvcEl.classList.remove("error");
-    }
+  if (cvcInput.length !== 3) {
+    errorMessageCVC.style.opacity = "1";
+    cvcEl.classList.add("error");
+  } else {
+    errorMessageCVC.style.opacity = "0";
+    cvcEl.classList.remove("error");
+  }
 
-    if (!isDate(dateInput)) {
-      errorMessageDate.style.opacity = "1";
-      dateEl.classList.add("error");
-    } else {
-      errorMessageDate.style.opacity = "0";
-      dateEl.classList.remove("error");
-    }
+  if (!isDate(dateInput)) {
+    errorMessageDate.style.opacity = "1";
+    dateEl.classList.add("error");
+  } else {
+    errorMessageDate.style.opacity = "0";
+    dateEl.classList.remove("error");
+  }
 
-    if (
-      errorMessageName.style.opacity === "0" &&
-      errorMessageAddress.style.opacity === "0" &&
-      errorMessageEmail.style.opacity === "0" &&
-      errorMessageCardNum.style.opacity === "0" &&
-      errorMessageCVC.style.opacity === "0" &&
-      errorMessageDate.style.opacity === "0"
-    ) {
-      formModal.style.display = "flex";
-      overlay.style.display = "block";
-      document.body.style.overflow = "hidden";
-      console.log(`
+  if (
+    errorMessageName.style.opacity === "0" &&
+    errorMessageAddress.style.opacity === "0" &&
+    errorMessageEmail.style.opacity === "0" &&
+    errorMessageCardNum.style.opacity === "0" &&
+    errorMessageCVC.style.opacity === "0" &&
+    errorMessageDate.style.opacity === "0"
+  ) {
+    formModal.style.display = "flex";
+    overlay.style.display = "block";
+    document.body.style.overflow = "hidden";
+    console.log(`
       Name: ${nameEl.value}
       Address: ${addressEl.value}
       Email: ${emailEl.value}
@@ -528,7 +528,6 @@ form.addEventListener("click", function (e) {
       Discount: ${discount.innerHTML}&#x20AC;
       Total price: ${totalPrice.innerHTML}&#x20AC;
       `);
-    }
   }
 });
 
@@ -640,6 +639,19 @@ const renderUsers = function () {
         "2px solid #E76A10";
     }
   });
+  const noSearchResults = `
+  <div class="no-results-container">
+  <div class='no-results'>
+  <img
+    src="images/sad-emoji.png"
+    alt="Sad Emoji"
+    class="no-results-img"
+  />
+  <p>No results found...</p>
+  </div>
+</div>
+  `;
+  streamers.insertAdjacentHTML("beforeend", noSearchResults);
 };
 
 const getUsers = async function () {
@@ -672,6 +684,14 @@ const filterStreamers = function () {
 };
 // filterStreamers();
 document.querySelector(".searchbox").addEventListener("input", filterStreamers);
+
+// if () {
+//   document.querySelector(".no-results-container").style.display = "block";
+// }
+
+function isHidden(el) {
+  return el.offsetParent === null;
+}
 
 // COMMENTS
 
@@ -810,8 +830,7 @@ widgetButton.addEventListener("click", function () {
           <div class='user-info'>
           <p class='user-name'>${activeUsers[i].name}</p>
           <p class='user-email'>(${activeUsers[i].email})</p>
-          <p class='user-status'>${activeUsers[i].statusMessage}</p>         
-          <p class='user-activity user-status'>${activeUsers[i].activity}</p>         
+          <p class='user-status'>${activeUsers[i].statusMessage}</p>        
           </div>
           </div>
           `;

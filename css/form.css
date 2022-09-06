@@ -209,6 +209,10 @@
   color: #99a8b4;
 }
 
+input[type="checkbox"]:checked {
+  background: #e74710;
+}
+
 /* ICONS */
 
 .relative {
