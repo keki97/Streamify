@@ -271,6 +271,12 @@
   color: #657785;
 }
 
+.form-modal-span {
+  color: #e76a10;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 1120px) {
