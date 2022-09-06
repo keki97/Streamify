@@ -249,7 +249,10 @@
 @media (max-width: 1440px) {
   .header {
     background-size: 1600px 1032px;
-    background-position: 15% 5%;
+    background-position: 30% 5%;
+
+    /* background-size: 1891px 1220px;
+    background-position: 10% 10%; */
   }
 
   .title {
