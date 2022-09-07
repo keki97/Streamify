@@ -17,7 +17,7 @@
     url(../images/header.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center 40% right;
   position: relative;
 }
 
@@ -248,11 +248,8 @@
 
 @media (max-width: 1440px) {
   .header {
-    background-size: 1600px 1032px;
-    background-position: 30% 5%;
-
-    /* background-size: 1891px 1220px;
-    background-position: 10% 10%; */
+    background-size: 1891px 1220px;
+    background-position: center 40% right;
   }
 
   .title {
