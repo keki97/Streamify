@@ -118,6 +118,10 @@
     padding: 40px 8px 24px;
   }
 
+  .top-container {
+    gap: 8px;
+  }
+
   .comment-img {
     height: 40px;
     width: 40px;
