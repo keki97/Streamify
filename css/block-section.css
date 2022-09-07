@@ -27,7 +27,7 @@
     ),
     url("../images/block-img-2.png");
   background-repeat: no-repeat;
-  background-size: 1666px 1052px;
+  background-size: cover;
   background-position: top 20% center;
 }
 
