@@ -180,6 +180,7 @@
   }
 
   .streamers {
+    max-height: 768px;
     grid-template-columns: 1fr;
     gap: 0;
     background: inherit;
