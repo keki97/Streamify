@@ -14,7 +14,7 @@
       rgba(255, 255, 255, 0.88) 22.85%,
       rgba(255, 255, 255, 0) 63.88%
     ),
-    url(/images/header.png);
+    url(../images/header.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -334,7 +334,7 @@
         rgba(255, 255, 255, 0) 6.88%,
         rgba(255, 255, 255, 0.72) 51.25%
       ),
-      url(/images/header.png);
+      url(../images/header.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
