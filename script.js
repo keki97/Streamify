@@ -528,6 +528,13 @@ document.querySelector(".payment-btn").addEventListener("click", function (e) {
       Discount: ${discount.innerHTML}&#x20AC;
       Total price: ${totalPrice.innerHTML}&#x20AC;
       `);
+    nameEl.value =
+      addressEl.value =
+      emailEl.value =
+      cardNumEl.value =
+      cvcEl.value =
+      dateEl.value =
+        "";
   }
 });
 
