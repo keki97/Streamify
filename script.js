@@ -441,7 +441,7 @@ const isEmail = function (email) {
 };
 
 const isDate = function (date) {
-  return /^(0[1-9]|1[0-2])\/([0-9]{2})$/.test(date);
+  return /^(0[1-9]|1[0-2])\/(2[2-7])$/.test(date);
 };
 
 const isCardNum = function (cardNum) {
