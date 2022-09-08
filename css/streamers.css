@@ -179,6 +179,7 @@
   }
 
   .searchbox {
+    width: auto;
     border-bottom: none;
   }
 
