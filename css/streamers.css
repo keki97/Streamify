@@ -19,12 +19,19 @@
 }
 
 .searchbox {
-  padding: 12px 40px 12px;
+  width: 400px;
+  padding: 12px 50px 12px;
   background: transparent;
   border: none;
   border-bottom: 1px solid #10b0e7;
   font-family: inherit;
   color: #99a8b4;
+}
+
+.searchbox::placeholder {
+  color: #99a8b4;
+  font-size: 14px;
+  line-height: 17px;
 }
 
 .searchbox:focus {
