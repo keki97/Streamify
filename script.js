@@ -86,7 +86,7 @@ const renderCoupon = async function (email) {
     body: JSON.stringify(couponBody),
   });
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   couponCode = data.data.code;
   // emailCode = data.data.email;
   // localStorage.setItem("email", emailCode);
@@ -554,7 +554,7 @@ const validateCoupon = async function (email, code) {
     redirect: "follow",
   });
   couponValidation = await res.json();
-  console.log(couponValidation);
+  // console.log(couponValidation);
   if (couponValidation.status) {
     discount.innerHTML = (subtotalPrice.innerHTML * discountPercentage).toFixed(
       2
@@ -570,9 +570,8 @@ const validateCoupon = async function (email, code) {
     couponEl.value = "";
   } else {
     errorMessageCoupon.style.opacity = "1";
+    errorMessageCoupon.textContent = couponValidation.message;
     couponEl.classList.add("error");
-    errorMessageEmail.style.opacity = "1";
-    emailEl.classList.add("error");
   }
 };
 
