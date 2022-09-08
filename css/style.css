@@ -18,6 +18,10 @@ input:-webkit-autofill {
   -webkit-background-clip: text;
 }
 
+input {
+  background-color: inherit;
+}
+
 .white {
   color: #f9f9f9;
 }
