@@ -325,10 +325,20 @@ input[type="checkbox"]:checked {
 @media (max-width: 700px) {
   .cardholder-container {
     max-width: 400px;
+    gap: 24px;
   }
 
   .form-header {
     font-size: 20px;
+    line-height: 24px;
+  }
+
+  .gap-md {
+    gap: 16px;
+  }
+
+  .credit-card-details-container {
+    padding-bottom: 8px;
   }
 
   .input-fields {
