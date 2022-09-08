@@ -566,6 +566,8 @@ const validateCoupon = async function (email, code) {
     errorMessageCoupon.innerHTML = "Coupon code successfully applied";
     errorMessageEmail.style.opacity = "0";
     emailEl.classList.remove("error");
+    emailEl.value = "";
+    couponEl.value = "";
   } else {
     errorMessageCoupon.style.opacity = "1";
     couponEl.classList.add("error");
