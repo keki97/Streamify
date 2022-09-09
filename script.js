@@ -92,6 +92,7 @@ const renderCoupon = async function (email) {
   // localStorage.setItem("email", emailCode);
   localStorage.setItem("coupon", couponCode);
   couponEl.value = data.data.code;
+  console.log(data.data.code);
   // emailEl.value = data.email;
 };
 
@@ -525,8 +526,8 @@ document.querySelector(".payment-btn").addEventListener("click", function (e) {
       CVC: ${cvcEl.value}
       Exp. date: ${dateEl.value}
       Packet: ${pricingPacketOption.innerHTML} ${pricingPacketPaymentPeriod.innerHTML} Membership plan
-      Discount: ${discount.innerHTML}&#x20AC;
-      Total price: ${totalPrice.innerHTML}&#x20AC;
+      Discount: ${discount.innerHTML}EUR;
+      Total price: ${totalPrice.innerHTML}EUR;
       `);
     nameEl.value =
       addressEl.value =
