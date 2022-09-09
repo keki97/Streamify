@@ -151,6 +151,11 @@
   /* text-align: center; */
 }
 
+.no-results-img {
+  width: 96px;
+  height: 96px;
+}
+
 .no-results p {
   font-weight: 600;
   font-size: 24px;
@@ -240,5 +245,15 @@
   .user-status {
     font-size: 14px;
     line-height: 17px;
+  }
+
+  .no-results-img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .no-results p {
+    font-size: 20px;
+    line-height: 24px;
   }
 }
