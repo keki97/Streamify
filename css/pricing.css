@@ -315,7 +315,7 @@
 
 @media (max-width: 650px) {
   .pricing {
-    padding: 64px 36px;
+    padding: 64px 36px 114px;
   }
 
   .pricing-header {
@@ -339,6 +339,10 @@
     width: 50px;
     border-radius: 42px;
     padding: 0 2.5px;
+  }
+
+  .circle-container {
+    bottom: -50px;
   }
 
   .circle {
