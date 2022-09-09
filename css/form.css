@@ -242,7 +242,7 @@ input[type="checkbox"]:checked {
   padding: 112px 150px 96px;
   border-radius: 8px;
   z-index: 100;
-  display: none;
+  /* display: none; */
 }
 
 .form-modal-secondary-header {
@@ -251,6 +251,7 @@ input[type="checkbox"]:checked {
   line-height: 61px;
   text-align: center;
   color: #072d49;
+  margin-bottom: 32px;
 }
 
 .form-modal-img {
@@ -399,6 +400,7 @@ input[type="checkbox"]:checked {
   .form-modal-secondary-header {
     font-size: 28px;
     line-height: 34px;
+    margin-bottom: 24px;
   }
 
   .form-modal-img {
